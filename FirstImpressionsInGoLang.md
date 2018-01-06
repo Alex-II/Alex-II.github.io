@@ -1,5 +1,5 @@
 # First Impressions in Golang
-For about two months now, I've both reworked other people's code and created my own code (that will be considered legacy soon enough). Nautrally, I've begun to develop an opinion (that I know can only be right) based on experience with Go so far.
+For about two months now, I've both reworked other people's code and created my own code (that will be considered legacy soon enough). Naturally, I've begun to develop an opinion (that I know can only be right) based on experience with Go so far.
 
 ## Prelude: Who Dares
 I'm not a language designer, I don't have five centuries of software engineering experience, so take these views as those of a common language user with two months of experience. It's first impressions. I hope to return six, twelve months from now and explain why my first impressions were ~~luck~~ genius or retort adequately.
