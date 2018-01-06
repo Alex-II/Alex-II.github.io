@@ -30,8 +30,7 @@ The [Golang Blog](https://blog.golang.org/error-handling-and-go) explains :
 
 Indeed, let's assume your function signature is `func SomeFunction() error` ; this means the function takes no arguments and returns an `error` (in this case, `error` is an interface from the std lib so the func returns something that implements that interface).
 
-We can do some interesting things:
-```
+```golang
 func SomeFunction() error {
 	var value int
 	var err error
