@@ -7,9 +7,9 @@ I'm not a language designer, I don't have five centuries of software engineering
 I've been nursed by Python, C#, JavaScript and C++.
 
 ## Error Handling
-Go functions can return several values and Go follows C's creed about errors being exposed as function return values. As exceptions don't exist in Go we have something of this sort:
+Go functions can return several values and Go uses this to better follow C's creed about errors being exposed as function return values. As exceptions don't exist in Go we have something of this sort:
 ```
-value, err = SomeOperation()
+resultValue, err = SomeOperation()
 ```
 By convention `err` is `nil` (null) if the function completed successfully and is not `nil` otherwise.
 
