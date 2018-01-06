@@ -233,7 +233,7 @@ It seems to me that Exceptions are just a tool, and if you use it poorly, you'll
 
 In the same way, Go's error handling is also just a methodology, and if used improperly, you'll get poor results.
 
-Go's error handling doesn't really force the programmer to do anything, except flood `return err` everywhere or just not check for errors at all. Until something breaks, just like they would with exceptions.
+Go's error handling doesn't really force the careless programmer to do anything, except flood `return err` everywhere (or just not check for errors at all) and only handle errors when something breaks, just like they would with exceptions.
 
 
 
