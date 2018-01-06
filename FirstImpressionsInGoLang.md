@@ -32,11 +32,39 @@ Indeed, let's assume your function signature is `func SomeFunction() error` ; th
 
 We can do some interesting things:
 ```
- 
+func SomeFunction() error {
+	var value int
+	var err error
+	value, err = someOperation()
+	if err != nil {
+		return err //we just forward the error upwards
+	}
 
+	value, err = someOperation2()
+	if err != nil {
+		//we add some details, then forward the error
+		return fmt.Errorf("Could not do the intended thing with the thing : %v", err)
+	}
 
+	value, err = someOperation3()
+	if err != nil {
+		//we know the error exposes more details, we can take action
+		switch err {
+		case InsufficientPraying:
+			SomeGracefulFailure()
+			return fmt.Errorf("couldn't some operation the 3rd, graceful failed : %v", err)
+		case NotEnoughLuck:
+			SomeOtherGracefulFailure()
+			return fmt.Errorf("couldn't some operation the 3rd, graceful failed the other way : %v", err)
+		default:
+			return fmt.Errorf("unexpected some operation the 3rd failure : %v", err)
+		}
+	}
 
+	value, err = someOperation4()
 
+	return nil
+}
 ```
 
 
