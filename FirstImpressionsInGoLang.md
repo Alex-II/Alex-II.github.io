@@ -97,7 +97,7 @@ As the Golang Blog says:
 That's very true indeed, when you inspect that `err` return value, you're pushed to immediatly process this error.
 
 However, the vast majority of the time, I see (vastly oversimplified):
-```
+```golang
 func SomeFunction() error {
 	var value int
 	var err error
