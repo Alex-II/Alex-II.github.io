@@ -60,7 +60,16 @@ func SomeFunction() error {
 		}
 	}
 
-	value, err = someOperation4()
+	value, err = someOperation4(value)
+	if err != nil {
+		//because the error can be whatever, it might contain functions or advanced magic
+		if preferSafety {
+			err.Rollback() //in this
+			return fmt.Errorf("failed to some operation with value %d, performed best effort rollback : %v", value, err.State)
+		}
+		return fmt.Errorf("failed to some operation with value %d, did not perform best effort rollback : %v", value, err.State)
+
+	}
 
 	return nil
 }
