@@ -150,19 +150,19 @@ I encourage you to read the full answer but I was dissapoitned by the length of 
 > We believe that coupling exceptions to a control structure, as in the try-catch-finally idiom, results in convoluted code
 Essentially, they feel try-catch-finally is convoluted. Can't really argue with such a broad somewhat subjective statement. 
 
-There's also this except from this [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.):
 > It also tends to encourage programmers to label too many ordinary errors, such as failing to open a file, as exceptional.
 Well, if the mechanism for errors in another language is to use exceptions, then failing to open a file is indeed an exception. I'm not sure where this was going.
 
+
+There's also this except from this [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.):
+
 >There is no question the resulting code can be longer, but the clarity and simplicity of such code offsets its verbosity. Explicit error checking forces the programmer to think about errors—and deal with them—when they arise. Exceptions make it too easy to ignore them rather than handle them, passing the buck up the call stack until it is too late to fix the problem or diagnose it well.
 
->[If] errors use special control structures, error handling distorts the control flow for a program that handles errors. The Java-like style of try-catch-finally blocks interlaces multiple overlapping flows of control that interact in complex ways. Although in contrast Go makes it more verbose to check errors, the explicit design keeps the flow of control straightforward — literally.
+>[There] is nothing truly exceptional about errors in computer programs. For instance, the inability to open a file is a common issue that does not deserve special linguistic constructs; if and return are fine.
 
-This is a fair point, the logic that handles the error is not 
+>Also, if errors use special control structures, error handling distorts the control flow for a program that handles errors. The Java-like style of try-catch-finally blocks interlaces multiple overlapping flows of control that interact in complex ways. Although in contrast Go makes it more verbose to check errors, the explicit design keeps the flow of control straightforward—literally.
 
->[There] is nothing truly exceptional about errors in computer programs. For instance, the inability to open a file is a common issue that does not deserve special linguistic constructs.
-This is probably the meat of the design decision.
-
+>There is no question the resulting code can be longer, but the clarity and simplicity of such code offsets its verbosity. Explicit error checking forces the programmer to think about errors—and deal with them—when they arise. Exceptions make it too easy to ignore them rather than handle them, passing the buck up the call stack until it is too late to fix the problem or diagnose it well.
 
 
 
