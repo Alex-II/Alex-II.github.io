@@ -4,20 +4,19 @@ For about two months now, I've both reworked other people's code and created my 
 ## Prelude: Who Dares
 I'm not a language designer, I don't have five centuries of software engineering experience, so take these views as those of a common language user with two months of experience. It's first impressions. I hope to return six, twelve months from now and explain why my first impressions were ~~luck~~ genius or retort adequately.
 
-I've been nurtured by Python, C#,  
+I've been nursed by Python, C#, JavaScript and C++.
 
 ## Error Handling
-Go functions can return several values and Go follows C's creed about errors being returned. As exceptions don't exist in Go we have something of this sort:
-
+Go functions can return several values and Go follows C's creed about errors being exposed as function return values. As exceptions don't exist in Go we have something of this sort:
 ```
 value, err = SomeOperation()
 ```
 By convention `err` is `nil` (null) if the function completed successfully and is not `nil` otherwise.
 
 Error objects are not special in any way really, they are just a variable like any other (unlike Exceptions, in C#, Python, Java, etc).
-The type of that error variable usually implements an Error interface (of the standard lib) but could implement any interface really (or be orphan to any interface).
+The type of that error variable usually implements an Error interface (of the standard lib) but could implement any interface really (or be entirely orphan to any interface).
 An "error" variable could be an any type really: an int, a byte, an IP, a FileReader, a BananaFactory.
-Point is: errors are not errors as a construct of the language but purely errors by convention (they're called 'err' or 'error', they implement an interface called 'Error' or 'My Biggest Mistake Yet', they have meaningful a value when shit went wrong and an , etc.)
+Point is: errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have meaningful a value when shit goes wrong and unexiciting values otherwise, etc.
 
 ### Why
 In theory, this means that Go very much encourages you to handle the error right there and then, nearest the function that errored out.
