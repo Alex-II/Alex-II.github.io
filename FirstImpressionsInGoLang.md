@@ -135,40 +135,80 @@ func SomeFunction() error {
 ```
 Is that really error handling?
 
-It feels that many functions, especially lower-level ones, can't do so much; code ends up looking like that for a pretty big chunk of the codebase. Maybe it's the codebases I've seen, but generally, you tend to bubble up the errors to a parent a few levels up that can make an actual decision on how to proceed, what other functions to use to remediate the situation, how to fail gracefully. 
+It feels that many functions, especially lower-level ones, can't do so much; a pretty big chunk of the codebase ends up looking like that. Maybe it's the codebases I've seen, but generally, you tend to bubble up the errors to a parent a few levels up that can make an actual decision on how to proceed, what other functions to use to remediate the situation, how to fail gracefully. 
 
-So the error mechanism seems to be built for a small portion of the codebase.
+**So the error mechanism seems to be built for a small portion of the codebase.**
 
-#### Why Not Exceptions?
+There's this except from this [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.):
+
+>There is no question the resulting code can be longer, but the clarity and simplicity of such code offsets its verbosity. Explicit error checking forces the programmer to think about errors — and deal with them — when they arise. Exceptions make it too easy to ignore them rather than handle them, passing the buck up the call stack until it is too late to fix the problem or diagnose it well.
+
+This is where I tend to disagree with their perspective (it's called being irrevocability correct). 
+
+Go's error handling scheme does not actually **force the handling of the error** and does not **force the programmer to deal with them when they arise**. Indeed, drowning the code with:
+
+```golang
+if err != nil{
+return err
+}
+```
+
+Is essentially a more verbose way of just not catching any exceptions.
+
+Is it a good idea to handle the errors? Yes. Is it a good idea deal with them when they arise? Sometimes.
+
+However, if the language user does not want to, they will not. In fact, they can just ignore the error altogether and never check it.
+
+Of course, the programmer is inched towards doing the right thing but if the good practices are absent, I don't feel this feautre will make a difference.
+
+I currently feel the tradeoff is not worth it. The verbosity and lack of error flow actually adds to my confusion when reading the codebase. Rarely have I seen errors immediatly handled, they're usually handled by a caller some levels up.
+
+
+#### Why Not Exceptions? 
 I was at first intrigued as to why Golang decided not to make use of Exceptions, so I tried to find some explanations. I couldn't find much but here it is.
 
-The [Golang FAQ](https://golang.org/doc/faq#exceptions) discussed why Exceptions were not included in Go, here is an excerpt:
-> We believe that coupling exceptions to a control structure, as in the try-catch-finally idiom, results in convoluted code. It also tends to encourage programmers to label too many ordinary errors, such as failing to open a file, as exceptional.
+The [Golang FAQ](https://golang.org/doc/faq#exceptions) and  [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.) touch on the exceptions.
 
-I encourage you to read the full answer but I was dissapoitned by the length of the main explanation, seen above.
+Essentially, and without much explanation as far as I can read, the view Exceptions as encouraging errors to be ignored or handled too late, which I've seen happen anyway in Go.
 
-> We believe that coupling exceptions to a control structure, as in the try-catch-finally idiom, results in convoluted code
-Essentially, they feel try-catch-finally is convoluted. 
+They also view exceptions as creating convoluted program flow, which I so far think is more a consequence of poor program design in general, not of Exceptions.
 
-Can't really comment much on such a broad somewhat subjective statement. 
-
-> It also tends to encourage programmers to label too many ordinary errors, such as failing to open a file, as exceptional.
+So far, I haven't felt that handling errors using Go's mechanism has created less convoluted flows.
 
 
-Well, if the mechanism for errors in another language is to use exceptions, then failing to open a file is indeed an exception. I'm not sure where this was going.
-
-
-There's also this except from this [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.):
-
->There is no question the resulting code can be longer, but the clarity and simplicity of such code offsets its verbosity. Explicit error checking forces the programmer to think about errors—and deal with them—when they arise. Exceptions make it too easy to ignore them rather than handle them, passing the buck up the call stack until it is too late to fix the problem or diagnose it well.
-
+#### Go's View on Errors in Computer Programs
+Still from the [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.):
 >[There] is nothing truly exceptional about errors in computer programs. For instance, the inability to open a file is a common issue that does not deserve special linguistic constructs; if and return are fine.
 
->Also, if errors use special control structures, error handling distorts the control flow for a program that handles errors. The Java-like style of try-catch-finally blocks interlaces multiple overlapping flows of control that interact in complex ways. Although in contrast Go makes it more verbose to check errors, the explicit design keeps the flow of control straightforward—literally.
+I think that this is really the meat of the argument: whether errors deserve special treatment.
 
->There is no question the resulting code can be longer, but the clarity and simplicity of such code offsets its verbosity. Explicit error checking forces the programmer to think about errors—and deal with them—when they arise. Exceptions make it too easy to ignore them rather than handle them, passing the buck up the call stack until it is too late to fix the problem or diagnose it well.
+My current view of the flow of execution is that the function makes certain assumptions about the state of the ressources it's accessing, and interactions it's having.
+
+Functions make these assupmtions and if the assumtions are wrong beyond a certain narrow point, they need to bail.
+
+I look at it as a matter of responsability; let's take the example of the inability to open a file.
+
+Let's suppose a function needs to open a file, read the data, perform some validation and store it.
+
+If the file is not readable, why has it become our function's problem to make it readable? It's simply not it's responsability to do so. Making the file readable might involve a certain number of operations, including asking the user to change permissions, or changing the permissions automatically. 
+
+So, currently, my view is that errors are exceptional: they occur when the assupmtions about the world are incorrect. A function was build based on these assumptions and correcting them all immediatly or near-immediatly is very much past the scope of that function's responsability.
 
 
+
+#### Exceptions can be Immediate Too
+I imagine that the fear of try-catch-finally looks something like this (I have to imagine because I haven't found an in-depth discussion):
+
+```python
+try:
+    pass
+    # millions of lines of code
+
+except Exception as e:
+    raise e
+```
+
+#### A Technological Solution to a Cultural Problem?
 
 
 
