@@ -148,9 +148,13 @@ The [Golang FAQ](https://golang.org/doc/faq#exceptions) discussed why Exceptions
 I encourage you to read the full answer but I was dissapoitned by the length of the main explanation, seen above.
 
 > We believe that coupling exceptions to a control structure, as in the try-catch-finally idiom, results in convoluted code
-Essentially, they feel try-catch-finally is convoluted. Can't really argue with such a broad somewhat subjective statement. 
+Essentially, they feel try-catch-finally is convoluted. 
+
+Can't really comment much on such a broad somewhat subjective statement. 
 
 > It also tends to encourage programmers to label too many ordinary errors, such as failing to open a file, as exceptional.
+
+
 Well, if the mechanism for errors in another language is to use exceptions, then failing to open a file is indeed an exception. I'm not sure where this was going.
 
 
