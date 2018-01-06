@@ -201,14 +201,42 @@ I imagine that the fear of try-catch-finally looks something like this (I have t
 
 ```python
 try:
-    pass
     # millions of lines of code
 
 except Exception as e:
     raise e
 ```
 
+However, that's not the only reality Exceptions offer.
+In a more Go-like manner, we could pseudo-have
+```python
+try:
+	fd = openFile(filePath)
+except IOError as e:
+	#do whatever
+
+
+try:
+	validate(fd)
+except Exception1:
+	#handle it
+except Exception2:
+	#handle it
+```
+
+If we don't mind verbosity, and clearly with Go we don't, exceptions can easily be used to do immediate handling of errors/exceptions.
+
 #### A Technological Solution to a Cultural Problem?
+In the end, I wonder if Go is trying to address a deficiency in the user of the langauge: poor error handling. 
+
+It seems to me that Exceptions are just a tool, and if you use it poorly, you'll get poor results.
+
+In the same way, Go's error handling is also just a methodology, and if used improperly, you'll get poor results.
+
+Go's error handling doesn't really force the programmer to do anything, except flood `return err` everywhere or just not check for errors at all. Until something breaks, just like they would with exceptions.
+
+
+
 
 
 
