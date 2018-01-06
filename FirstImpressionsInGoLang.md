@@ -36,18 +36,18 @@ func SomeFunction() error {
 	var err error
 	value, err = someOperation()
 	if err != nil {
-		return err //we just forward the error upwards
+		return err // (1) we just forward the error upwards
 	}
 
 	value, err = someOperation2()
 	if err != nil {
-		//we add some details, then forward the error
+		// (2) we add some context, then forward the error
 		return fmt.Errorf("Could not do the intended thing with the thing : %v", err)
 	}
 
 	value, err = someOperation3()
 	if err != nil {
-		//we know the error exposes more details, we can take action
+		// (3) we know the error exposes more details, we can take action right away
 		switch err {
 		case InsufficientPraying:
 			SomeGracefulFailure()
@@ -62,18 +62,19 @@ func SomeFunction() error {
 
 	value, err = someOperation4(value)
 	if err != nil {
-		//because the error can be whatever, it might contain functions or advanced magic
+		// (4) because the error can be whatever, it might contain functions or advanced magic
 		if preferSafety {
-			err.Rollback() //in this
+			err.Rollback() 
 			return fmt.Errorf("failed to some operation with value %d, performed best effort rollback : %v", value, err.State)
 		}
-		return fmt.Errorf("failed to some operation with value %d, did not perform best effort rollback : %v", value, err.State)
+		return fmt.Errorf("failed to some operation with value %d, did not perform rollback : %v", value, err.State)
 
 	}
 
 	return nil
 }
 ```
+### What's the Problem?
 
 
 The [Golang FAQ](https://golang.org/doc/faq#exceptions) discussed why Exceptions were not included in Go, here is an excerpt:
