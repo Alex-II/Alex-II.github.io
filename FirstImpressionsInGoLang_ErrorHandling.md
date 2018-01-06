@@ -1,4 +1,4 @@
-# First Impressions in Golang
+## First Impressions of Golang
 For about two months now, I've both reworked other people's code and created my own code (that will be considered legacy soon enough). Naturally, I've begun to develop an opinion (that I know can only be right) based on experience with Go so far.
 
 ## Prelude: Who Dares
@@ -76,17 +76,11 @@ func SomeFunction() error {
 ```
 ### What's the Problem?
 #### Visual Noise
-My first issue, fairly subjective, is that this error handling is pretty noisy.
-Because errors are not special to the language, their handling looks like normal operations.
+My first issue, fairly subjective, is that this error handling is pretty noisy. Because errors are not special to the language, their handling looks like normal operations.
 
-I feel that clarity is lost when trying to understand the intention of the code. 
-In the prior example, the code not dealing with errors is always at the same level of indentation; however, when conditional statements and loops kick in, indentation is no longer an indicator of normal code or error handling code.
+I feel that clarity is lost when trying to understand the intention of the code. In the prior example, the code not dealing with errors is always at the same level of indentation; however, when conditional statements and loops kick in, indentation is no longer an indicator of normal code or error handling code.
 
-It's up to the programmer, when trying to understand a function, to not only read Go (which is pretty verbose) but to additionally backtrack when falling into error handling, which happens as often as function calls.
-
-Because errors aren't special or attached to any keywords, IDEs (currently) don't provide any specific highlighting, which would help with the noise.
-
-I confess this might be just a problem for non-C, non-Go programmers but it's frustrating me at the moment.
+It's up to the programmer, when trying to understand a function, to not only read Go (which is pretty verbose) but to additionally backtrack when falling into error handling, which happens as often as function calls. Because errors aren't special or attached to any keywords, IDEs (currently) don't provide any specific highlighting, which would help with the noise. I confess this might be just a problem for non-C, non-Go programmers but it's frustrating me at the moment.
 
 #### Lack of Actual Handling
 It's noisy but it's worth it, isn't it?
@@ -143,9 +137,7 @@ There's this except from this [keynote adaptation from 2012](https://talks.golan
 
 >There is no question the resulting code can be longer, but the clarity and simplicity of such code offsets its verbosity. Explicit error checking forces the programmer to think about errors — and deal with them — when they arise. Exceptions make it too easy to ignore them rather than handle them, passing the buck up the call stack until it is too late to fix the problem or diagnose it well.
 
-This is where I tend to disagree with their perspective (it's called being irrevocability correct). 
-
-Go's error handling scheme does not actually **force the handling of the error** and does not **force the programmer to deal with them when they arise**. Indeed, drowning the code with:
+This is where I tend to disagree with their perspective (it's called being irrevocability correct). Go's error handling scheme does not actually **force the handling of the error** and does not **force the programmer to deal with them when they arise**. Indeed, drowning the code with:
 
 ```golang
 if err != nil{
@@ -157,9 +149,7 @@ Is essentially a more verbose way of just not catching any exceptions.
 
 Is it a good idea to handle the errors? Yes. Is it a good idea deal with them when they arise? Sometimes.
 
-However, if the language user does not want to, they will not. In fact, they can just ignore the error altogether and never check it.
-
-Of course, the programmer is inched towards doing the right thing but if the good practices are absent, I don't feel this feautre will make a difference.
+However, if the language user does not want to, they will not. In fact, they can just ignore the error altogether and never check it. Of course, the programmer is inched towards doing the right thing but if the good practices are absent, I don't feel this feautre will make a difference.
 
 I currently feel the tradeoff is not worth it. The verbosity and lack of error flow actually adds to my confusion when reading the codebase. Rarely have I seen errors immediatly handled, they're usually handled by a caller some levels up.
 
@@ -167,11 +157,9 @@ I currently feel the tradeoff is not worth it. The verbosity and lack of error f
 #### Why Not Exceptions? 
 I was at first intrigued as to why Golang decided not to make use of Exceptions, so I tried to find some explanations. I couldn't find much but here it is.
 
-The [Golang FAQ](https://golang.org/doc/faq#exceptions) and  [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.) touch on the exceptions.
+The [Golang FAQ](https://golang.org/doc/faq#exceptions) and  [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.) touch on exceptions.
 
-Essentially, and without much explanation as far as I can read, they view Exceptions as encouraging errors to be ignored or handled too late, which I've seen happen anyway in Go.
-
-They also view exceptions as creating convoluted program flow, which I so far think is more a consequence of poor program design in general, not of Exceptions.
+Essentially, and without much explanation as far as I can read, they view Exceptions as encouraging errors to be ignored or handled too late, which I've seen happen anyway in Go. They also view exceptions as creating convoluted program flow, which I so far think is more a consequence of poor program design in general, not of Exceptions.
 
 So far, I haven't felt that handling errors using Go's mechanism has created less convoluted flows.
 
@@ -182,13 +170,9 @@ Still from the [keynote adaptation from 2012](https://talks.golang.org/2012/spla
 
 I think that this is really the meat of the argument: whether errors deserve special treatment.
 
-My current view of the flow of execution is that the function makes certain assumptions about the state of the ressources it's accessing, and interactions it's having.
+My current view of the flow of execution is that the function makes certain assumptions about the state of the ressources it's accessing, and interactions it's having. Functions make these assupmtions and if the assumtions are wrong beyond a certain narrow point, they need to bail. 
 
-Functions make these assupmtions and if the assumtions are wrong beyond a certain narrow point, they need to bail.
-
-I look at it as a matter of responsability; let's take the example of the inability to open a file.
-
-Let's suppose a function needs to open a file, read the data, perform some validation and store it.
+I look at it as a matter of responsability; let's take the example of the inability to open a file.Let's suppose a function needs to open a file, read the data, perform some validation and store it.
 
 If the file is not readable, why has it become our function's problem to make it readable? It's simply not it's responsability to do so. Making the file readable might involve a certain number of operations, including asking the user to change permissions, or changing the permissions automatically. 
 
@@ -229,9 +213,7 @@ If we don't mind verbosity, and clearly with Go we don't, exceptions can easily 
 #### A Technological Solution to a Cultural Problem?
 In the end, I wonder if Go is trying to address a deficiency in the user of the langauge: poor error handling. 
 
-It seems to me that Exceptions are just a tool, and if you use it poorly, you'll get poor results.
-
-In the same way, Go's error handling is also just a methodology, and if used improperly, you'll get poor results.
+It seems to me that Exceptions are just a tool, and if you use it poorly, you'll get poor results. In the same vein, Go's error handling is also just a methodology, and if used improperly, you'll still get poor results.
 
 Go's error handling doesn't really force the careless programmer to do anything, except flood `return err` everywhere (or just not check for errors at all) and only handle errors when something breaks, just like they would with exceptions.
 
