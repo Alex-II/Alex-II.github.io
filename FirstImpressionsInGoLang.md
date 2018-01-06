@@ -169,7 +169,7 @@ I was at first intrigued as to why Golang decided not to make use of Exceptions,
 
 The [Golang FAQ](https://golang.org/doc/faq#exceptions) and  [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.) touch on the exceptions.
 
-Essentially, and without much explanation as far as I can read, the view Exceptions as encouraging errors to be ignored or handled too late, which I've seen happen anyway in Go.
+Essentially, and without much explanation as far as I can read, they view Exceptions as encouraging errors to be ignored or handled too late, which I've seen happen anyway in Go.
 
 They also view exceptions as creating convoluted program flow, which I so far think is more a consequence of poor program design in general, not of Exceptions.
 
