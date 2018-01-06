@@ -23,12 +23,21 @@ An "error" variable could be an any type really: an int, a byte, an IP, a FileRe
 Point is: errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have meaningful a value when shit goes wrong and unexiciting values otherwise, etc.
 
 ### Why
-In theory, this means that Go very much encourages you to handle the error right there and then, nearest the function that errored out.
+In theory, Go very much encourages you to handle errors right there and then, nearest the function that errored out.
 The [Golang Blog](https://blog.golang.org/error-handling-and-go) explains :
 
 >In Go, error handling is important. The language's design and conventions encourage you to explicitly check for errors where they occur (as distinct from the convention in other languages of throwing exceptions and sometimes catching them). In some cases this makes Go code verbose, but fortunately there are some techniques you can use to minimize repetitive error handling.
 
-In practice, what I have noticed is a great deal of the following.
+Indeed, let's assume your function signature is `func SomeFunction() error` ; this means the function takes no arguments and returns an `error` (in this case, `error` is an interface from the std lib so the func returns something that implements that interface).
+
+We can do some interesting things:
+```
+ 
+
+
+
+
+```
 
 
 The [Golang FAQ](https://golang.org/doc/faq#exceptions) discussed why Exceptions were not included in Go, here is an excerpt:
