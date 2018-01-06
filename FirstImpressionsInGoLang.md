@@ -13,9 +13,13 @@ resultValue, err = SomeOperation()
 ```
 By convention `err` is `nil` (null) if the function completed successfully and is not `nil` otherwise.
 
+
 Error objects are not special in any way really, they are just a variable like any other (unlike Exceptions, in C#, Python, Java, etc).
 The type of that error variable usually implements an Error interface (of the standard lib) but could implement any interface really (or be entirely orphan to any interface).
+
 An "error" variable could be an any type really: an int, a byte, an IP, a FileReader, a BananaFactory.
+
+
 Point is: errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have meaningful a value when shit goes wrong and unexiciting values otherwise, etc.
 
 ### Why
