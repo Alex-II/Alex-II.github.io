@@ -13,7 +13,7 @@ By convention `err` is `nil` (null) if the function completed successfully an
 Error objects are not special in any way really, they are just a variable like any other (unlike Exceptions, in C#, Python, Java, etc).
 The type of that error variable usually implements an Error interface (of the standard lib) but could be anything really: an int, a byte, a FileReader, a BananaFactory.
 
-Errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have meaningful a value when shit goes wrong and unexiciting values otherwise.
+Errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have meaningful a value when shit goes wrong and unexciting values otherwise.
 
 ### Why
 In theory, Go very much encourages you to handle errors right there and then, nearest the function that errored out.
@@ -71,7 +71,7 @@ func SomeFunction() error {
 #### Visual Noise
 My first issue, fairly subjective, is that this error handling is pretty noisy. Because errors are not special to the language, their handling looks like normal operations.
 
-Clarity is lost when trying to decypher the intent of the code. In the prior example, the code not dealing with errors is always at the same level of indentation; however, when conditional statements and loops kick in, indentation is no longer an indicator of normal code or error handling code.
+Clarity is lost when trying to decipher the intent of the code. In the prior example, the code not dealing with errors is always at the same level of indentation; however, when conditional statements and loops kick in, indentation is no longer an indicator of normal code or error handling code.
 
 It's up to the programmer, when trying to understand a function, to not only read Go (which is pretty verbose) but to additionally backtrack when falling into error handling, which happens as often as function calls. Because errors aren't special or attached to any keywords, IDEs (currently) don't provide any specific highlighting, which would help with the noise. I confess this might be just a problem for non-C, non-Go programmers but it's frustrating me at the moment.
 
@@ -155,7 +155,7 @@ The [Golang FAQ](https://golang.org/doc/faq#exceptions) and  [keynote adaptation
 
 Essentially, and without much explanation as far as I can read, they view Exceptions as encouraging errors to be ignored or handled too late, which I've seen happen in Go anyway. They also accuse exceptions of creating convoluted program flows, which I so far think is more a consequence of poor program design in general, not of Exceptions themselves.
 
-I don't feel that handling errors using Go's mechanism, which emualtes Exceptions anyways, has created less convoluted flows.
+I don't feel that handling errors using Go's mechanism, which emulates Exceptions anyways, has created less convoluted flows.
 
 #### Go's View on Errors in Computer Programs
 Still from the [keynote adaptation from 2012](https://talks.golang.org/2012/splash.article#TOC_16.):
@@ -163,17 +163,17 @@ Still from the [keynote adaptation from 2012](https://talks.golang.org/2012/spla
 
 I think that this is really the meat of the argument: whether errors deserve special treatment.
 
-My current view of the flow of execution of a function is that the function makes certain assumptions about the state of the ressources it's accessing, and interactions it's having. Functions are designed with these assupmtions and, in general, if the assumptions are wrong, the functions needs to fail (fast). 
+My current view of the flow of execution of a function is that the function makes certain assumptions about the state of the resources it's accessing, and interactions it's having. Functions are designed with these assumptions and, in general, if the assumptions are wrong, the functions needs to fail (fast). 
 
-I look at this as a matter of responsability; let's take the example of the inability to open a file. Let's suppose a function needs to  open a file, read the data, perform some validation and store data.
+I look at this as a matter of responsibility; let's take the example of the inability to open a file. Let's suppose a function needs to  open a file, read the data, perform some validation and store data.
 
-If the file is not readable, why has it become our function's problem to make it readable? It's simply not its responsability to do so. Making the file readable might involve a certain number of operations, including asking the user to change permissions, or changing the permissions automatically. 
+If the file is not readable, why has it become our function's problem to make it readable? It's simply not its responsibility to do so. Making the file readable might involve a certain number of operations, including asking the user to change permissions, or changing the permissions automatically. 
 
-Of course, _some_ errors are readely fixable but effectively, the vast majority of errors cannot be recoved from from within the function, and nor should they. The error handling mechanism should work for common use cases.
+Of course, _some_ errors are readily fixable but effectively, the clear majority of errors cannot be recovered from within the function, and nor should they. The error handling mechanism should work for common use cases.
 
 
 #### Exceptions can be Immediate Too
-I imagine that the fear of try-catch-finally looks something like this (I have to imagine because there's no design dicussion):
+I imagine that the fear of try-catch-finally looks something like this (I have to imagine because there's no design discussion):
 
 ```python
 try:
