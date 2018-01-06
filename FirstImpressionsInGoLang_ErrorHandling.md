@@ -170,18 +170,17 @@ Still from the [keynote adaptation from 2012](https://talks.golang.org/2012/spla
 
 I think that this is really the meat of the argument: whether errors deserve special treatment.
 
-My current view of the flow of execution is that the function makes certain assumptions about the state of the ressources it's accessing, and interactions it's having. Functions make these assupmtions and if the assumtions are wrong beyond a certain narrow point, they need to bail. 
+My current view of the flow of execution is that the function makes certain assumptions about the state of the ressources it's accessing, and interactions it's having. Functions make these assupmtions and if the assumptions are wrong beyond a certain narrow angle, the functions need to fail. 
 
-I look at it as a matter of responsability; let's take the example of the inability to open a file.Let's suppose a function needs to open a file, read the data, perform some validation and store it.
+I look at this as a matter of responsability; let's take the example of the inability to open a file. Let's suppose a function needs to open a file, read the data, perform some validation and store it.
 
-If the file is not readable, why has it become our function's problem to make it readable? It's simply not it's responsability to do so. Making the file readable might involve a certain number of operations, including asking the user to change permissions, or changing the permissions automatically. 
+If the file is not readable, why has it become our function's problem to make it readable? It's simply not its responsability to do so. Making the file readable might involve a certain number of operations, including asking the user to change permissions, or changing the permissions automatically. 
 
-So, currently, my view is that errors are exceptional: they occur when the assupmtions about the world are incorrect. A function was build based on these assumptions and correcting them all immediatly or near-immediatly is very much past the scope of that function's responsability.
-
+So, currently, my view is that errors are exceptional: they occur when the assupmtions about the world are incorrect. A function was built based on these world-assumptions and correcting them all immediatly or near-immediatly is very much past the scope of that function's responsability.
 
 
 #### Exceptions can be Immediate Too
-I imagine that the fear of try-catch-finally looks something like this (I have to imagine because I haven't found an in-depth discussion):
+I imagine that the fear of try-catch-finally looks something like this (I have to imagine because I haven't found an analysis of the fear):
 
 ```python
 try:
