@@ -178,7 +178,6 @@ I imagine that the fear of try-catch-finally looks something like this (I have t
 ```python
 try:
 	# millions of lines of code
-
 except Exception as e:
 	raise e
 ```
@@ -190,8 +189,6 @@ try:
 	fd = openFile(filePath)
 except IOError as e:
 	#do whatever
-
-
 try:
 	validate(fd)
 except Exception1:
