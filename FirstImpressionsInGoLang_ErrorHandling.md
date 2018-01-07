@@ -13,7 +13,7 @@ By convention `err` is `nil` (null) if the function completed successfully an
 Error objects are not special in any way really, they are just a variable like any other (unlike Exceptions, in C#, Python, Java, etc).
 The type of that error variable usually implements an Error interface (of the standard lib) but could be anything really: an int, a byte, a FileReader, a BananaFactory.
 
-Errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have meaningful a value when shit goes wrong and unexciting values otherwise.
+Errors are not errors as a construct of the language but purely errors by convention: they're called 'err' or 'error', they implement an interface called 'Error' or 'MyBiggestMistakeYet', they have a meaningful value when shit goes wrong and unexciting values otherwise.
 
 ### Why
 In theory, Go very much encourages you to handle errors right there and then, nearest the function that errored out.
