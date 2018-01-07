@@ -178,6 +178,7 @@ I imagine that the fear of try-catch-finally looks something like this (I have t
 ```python
 try:
 	# millions of lines of code
+	done()
 except Exception as e:
 	raise e
 ```
