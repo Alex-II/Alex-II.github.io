@@ -177,10 +177,10 @@ I imagine that the fear of try-catch-finally looks something like this (I have t
 
 ```python
 try:
-    # millions of lines of code
+	# millions of lines of code
 
 except Exception as e:
-    raise e
+	raise e
 ```
 
 However, that's not the only reality Exceptions offer.
