@@ -35,7 +35,7 @@ func SomeFunction() error {
 	value, err = someOperation2()
 	if err != nil {
 		// (2) we add some context, then forward the error
-		return fmt.Errorf("Could not do the intended thing with the thing : %v", err)
+		return fmt.Errorf("someOperation2 failed : %v", err)
 	}
 
 	value, err = someOperation3()
@@ -44,12 +44,12 @@ func SomeFunction() error {
 		switch err {
 		case InsufficientPraying:
 			SomeGracefulFailure()
-			return fmt.Errorf("couldn't some operation the 3rd, graceful failed : %v", err)
+			return fmt.Errorf("graceful failure : %v", err)
 		case NotEnoughLuck:
 			SomeOtherGracefulFailure()
-			return fmt.Errorf("couldn't some operation the 3rd, graceful failed the other way : %v", err)
+			return fmt.Errorf("other graceful failure : %v", err)
 		default:
-			return fmt.Errorf("unexpected some operation the 3rd failure : %v", err)
+			return fmt.Errorf("disaster: %v", err)
 		}
 	}
 
@@ -58,9 +58,9 @@ func SomeFunction() error {
 		// (4) because the error can be whatever, it might contain functions or advanced magic
 		if preferSafety {
 			err.Rollback() 
-			return fmt.Errorf("failed to some operation with value %d, performed best effort rollback : %v", value, err.State)
+			return fmt.Errorf("performed best effort rollback : %v", value, err.State)
 		}
-		return fmt.Errorf("failed to some operation with value %d, did not perform rollback : %v", value, err.State)
+		return fmt.Errorf("did not perform rollback : %v", value, err.State)
 
 	}
 
