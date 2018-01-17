@@ -104,19 +104,6 @@ func SomeFunction() error {
 	if err != nil {
 		return err
 	}
-	if value == 1 {
-		value, err = someOperation5()
-		if err != nil {
-			return err
-		}
-	} else {
-		value, err = someOperation6()
-		if err != nil {
-			return err
-		}
-
-	}
-
 	return nil
 }
 ```
