@@ -55,7 +55,7 @@ func SomeFunction() error {
 
 	value, err = someOperation4(value)
 	if err != nil {
-		// (4) because the error can be whatever, it might contain functions or advanced magic
+		// (4) because err can be whatever, it might contain functions or advanced magic
 		if preferSafety {
 			err.Rollback() 
 			return fmt.Errorf("performed best effort rollback : %v", value, err.State)
