@@ -1,3 +1,9 @@
 theme: minima
 title: Little Big Engineer
 #show_downloads: ["true" or "false" to indicate whether to provide a download URL]
+
+header_pages:
+  - tech_blog.md
+  - papers_summaries.md
+  - about.md
+  

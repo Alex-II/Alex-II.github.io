@@ -2,5 +2,4 @@
 layout: default
 ---
 
-Welcome to my page. 
-
+Author: Alex
