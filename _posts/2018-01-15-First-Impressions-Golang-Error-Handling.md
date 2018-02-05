@@ -2,6 +2,7 @@
 layout: post
 title:  "First Impressions of Golang: Error Handling"
 ---
+
 ## First Impressions of Golang: Error Handling
 For about two months now, I've both reworked other people's code and created my own code (that will be considered legacy soon enough). Naturally, I've begun to develop an opinion (that I know can only be right) based on my experience with Go so far.
 
