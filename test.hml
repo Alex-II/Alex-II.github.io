@@ -1,2 +1,14 @@
-<h1>jsut checking</h1>
-<b> maybe </b> maybe not
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="0; url=https://github.com/Alex-II/Alex-II.github.io/blob/master/blog.md">
+        <script type="text/javascript">
+            window.location.href = "https://github.com/Alex-II/Alex-II.github.io/blob/master/blog.md"
+        </script>
+        <title>Page Redirection</title>
+    </head>
+    <body>
+       waaaaa
+    </body>
+</html>
