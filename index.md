@@ -5,12 +5,17 @@ layout: default
 
 ## Tech Blog
 
- {% for post in site.posts limit:1 %}
-    * [{{ post.title }}]({{ post.url | relative_url  }})
- {% endfor %}
+<ul>
+  {% for post in site.posts limit 1 %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 
 
-## [About]({{ "about.md" | relative_url }})
+
+## [About]({{ "about.html" | relative_url }})
 
 
 
