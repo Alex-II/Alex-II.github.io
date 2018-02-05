@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default2
 title: Little Big Engineer
 ---
 
@@ -16,10 +16,3 @@ title: Little Big Engineer
 
 
 ## [Papers Summaries]({{ "papers_summaries.html" | relative_url }})
-
-## [About]({{ "about.html" | relative_url }})
-
-## [Twitter](https://twitter.com/alext_rex)
-
-
-
