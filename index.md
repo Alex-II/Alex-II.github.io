@@ -3,8 +3,6 @@ layout: default
 title: Little Big Engineer
 ---
 
-## About Me
-
 ## Tech Blog
 
 <ul>
