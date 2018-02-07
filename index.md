@@ -4,7 +4,7 @@ title: Little Big Engineer
 ---
 
 
-## [Tech Blog]({{ "tech_blog.html" | relative_url }})
+## Tech Blog
 
 <ul>
   {% for post in site.posts limit:5 %}
@@ -15,4 +15,4 @@ title: Little Big Engineer
 </ul>
 
 
-## [Papers Summaries]({{ "papers_summaries.html" | relative_url }})
+## Papers Summaries
