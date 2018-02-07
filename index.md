@@ -15,4 +15,4 @@ title: Little Big Engineer
 </ul>
 
 
-## Papers Summaries
+## Paper Summaries
