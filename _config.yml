@@ -3,8 +3,9 @@ title: Little Big Engineer
 #show_downloads: ["true" or "false" to indicate whether to provide a download URL]
 #theme: jekyll-theme-minimal
 
-header_pages:
-  - tech_blog.md
-  - papers_summaries.md
-  - about.md
+#for 'minima' theme
+#header_pages:
+#  - tech_blog.md
+#  - papers_summaries.md
+#  - about.md
   
