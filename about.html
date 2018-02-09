@@ -35,6 +35,10 @@ img.projecticon{
 ul.nobullet{
     list-style-type: none
 }
+
+li.bullet{
+    list-style-type: circle  
+}
 </style>
 <h2 class="center"> About Me </h2>
 <ul class="nobullet">
@@ -46,27 +50,59 @@ ul.nobullet{
 <h2 class="center"> Engineering Projects</h2>
 
 <div class="center">
-        <h3 class="center"><img class='projecticon' src='assets/cubesat.jpg'>   Cubesat Design</h3>
+        <h3 class="center"><img class='projecticon' src='assets/cubesat.jpg'>   Nanosatellite Design</h3>
     <ul class="nobullet">
-        <li> 
-                <h4>  Software Subsystem</h4>
+<li>
+    Desinging, building and testing a space-worthy nanosatellite (30cm x 10cm x 10cm).
+    <br>Won first place in the <a href="http://www.csdcms.ca">Canadian Satellite Design Challenge</a>.
+</li>
 
-        </li>
-        <hr>
-       
         <li> 
-                <h4>Communication Subsystem</h4>
-                
+                <h4> Challenges </h4>
+
             </li>
-            <hr>
-           
+            <li ul class="bullet">
+                Working with a multidisciplary team: 
+            </li>
+
+            <li>
+                        Interfacing with external collaborators and stakeholders  
+
+            </li>
+                
+            <li>
+                <h4>Work</h4>
+            </li>
+
+            <li>
+                    Designed custom communication protocol, modeled after TCP, to provide reliable wireless communication over AX.25 link
+            </li>
+
+            <li>
+                    Developed software library to ease interfacing with transceiver that uses custom command
+            </li>
+
+            <li>
+                    Coded userspace drivers, in C++ for embedded Linux platform
+            </li>
+
+            <li>
+            </li>
+        <hr>
+    
     </ul>
 
     <h3 class="center"><img class='projecticon' src='assets/robotics.jpg'>  University Rover Challenge</h3>
     <ul class="nobullet">
         <li> 
                 <h4>Electrical Subsystem</h4>
-            
+                ● Determined system requirements and project risks
+                ● Coded video streaming software module, in C#
+                ● Developed PID motor controller using microcontroller and various hardware (digital, analog and I2C ICs)
+                ● Developed visualization and interfacing software for motor controller in C#, displaying plotted real-time sensor data and tuning tools
+                ● Designed and realized rover’s communication subsystem, while considering software team’s needs, necessary for rover teleoperation
+                ● Coded custom network benchmark tool to profile communication subsystem performance (throughput, latency, TCP vs UDP, packet loss)
+                
         </li>
         <hr>
        
