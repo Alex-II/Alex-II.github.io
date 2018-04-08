@@ -12,6 +12,3 @@ title: Little Big Engineer
     </li>
   {% endfor %}
 </ul>
-
-
-## Paper Summaries
