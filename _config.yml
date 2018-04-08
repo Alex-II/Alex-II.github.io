@@ -4,6 +4,8 @@ title: Little Big Engineer
 #theme: jekyll-theme-minimal
 
 #for 'minima' theme
-#header_pages:
-#     - about.md
+header_pages:
+     - tech_blog.html
+     - research_summary.html
+     - reading_notes.html
   
