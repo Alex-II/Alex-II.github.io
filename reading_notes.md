@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Little Big Engineer
+title: Reading Notes
 ---
 
 ## Reading Notes

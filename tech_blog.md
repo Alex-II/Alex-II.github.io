@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Little Big Engineer
+title: Tech Blog
 ---
 
 ## Tech Blog
