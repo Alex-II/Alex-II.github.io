@@ -1,9 +1,9 @@
-#theme: minima
+    theme: minima
 title: Little Big Engineer
 #show_downloads: ["true" or "false" to indicate whether to provide a download URL]
-theme: jekyll-theme-minimal
+#theme: jekyll-theme-minimal
 
-#for 'minima' theme
+for 'minima' theme
 #header_pages:
 #  - about.md
   
