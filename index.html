@@ -1,145 +1,95 @@
----
-layout: default
-title: ""
----
-<style>
-hr { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content='width=device-width, initial-scale=1.0,
+                                   maximum-scale=1.0, user-scalable=0'/>
+    <meta name="description" content="alex personal webpage.">
+    <meta name="author" content="alex">
+    <title>Alex</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/index-main.css" rel="stylesheet">
+  </head>
+  <body>
+    <left>
+    <div class="container">
+      <div class="row" id="query">
+        <div id="bio" class="col-xs-12 col-sm-8 col-md-8">
+          <div class="panel">
+          <p>
+            I graduated from <a href="https://www.concordia.ca/">Concordia University</a> in Computer Engineering.
+            Currently, I am a Software designer in the control plane team at <a href="https://www.kaloom.com">Kaloom</a>, where we aim to solve various virtual network function (VNF) challenges. In my free time I like to write tech posts, summarize research papers, and take random notes of what I read on the internet.<br><br>
 
-.center{
-    /*margin: auto;
-    width: 50%;
-    padding: 10px;*/
-}
+            <center>
+                <a href="mailto:alcoolex@gmail.com">Email</a> / <a href="https://www.linkedin.com/in/alex-teodor-ionita-65a2b320/" target="_blank">Linkedin</a> / <a href="https://github.com/alex-ii">Github</a> / <a href="https://twitter.com/alext_rex">Twitter</a> / <a href="blog.html" target="_blank">Blog</a>
+            </center>
+          </p>
 
-hr.box{
-    height: 10px;
-	border: 0;
-	box-shadow: 0 10px 10px -10px #8c8b8b inset;
-}
+	  <hr>
 
-img.companyicon{
-    max-width:10px;
-}
+    	   <p>
+              My current interests are in networking, back-end development and distributed systems in general.
+              I previously explored the space of embedded systems and low-level development in the context of aerospace and space related projects.
+           </p>
 
-img.projecticon{
-    max-width:20px;
-}
+        <hr>
 
-ul.nobullet{
-    list-style-type: none
-}
-
-li.bullet{
-    list-style-type: circle  
-}
-</style>
-
-<h2 class="center"> <a href='tech_blog.html'> Tech Blog Posts</a> </h2>
-<h2 class="center"> <a href="research_summary.html"> Research Papers Summaries </a></h2>
-<h2 class="center"> <a href="reading_notes.html"> Reading Notes </a></h2>
-
-<h2 class="center"> About Me </h2>
-<ul class="nobullet">
-        <li> 
-                Computer Engineering at Concordia University, Montreal (Canada)
-        </li>
-    </ul>
-<h2 class="center"> Professional Experiences</h2>
-
-
-<div class="center">
+	    <h3 class="Section1">Professional Experiences</h3>
 <ul>
     <li>Software Developer, Networking  &amp; Systems
-        <br>
-        <img class='companyicon' src='assets/kaloom-small.png'>
-        Kaloom (Aug. 2017 - Present)
-            
+        <br><img class='companyicon' src='assets/kaloom-small.png'>
+        <a href="https://www.kaloom.com">Kaloom</a> (Aug. 2017 - Present)
     </li>
     <hr>
     <li>Software Developer, Emerging Technologies R&amp;D
-        <br>
-        <img class='companyicon' src='assets/jda.png'>
-        JDA (Mar. 2017 - Aug. 2017)
+        <br><img class='companyicon' src='assets/jda.png'>
+        <a href="https://jda.com/">JDA</a> (Mar. 2017 - Aug. 2017)
     </li>
     <hr>
     <li>Software Developer, Corporate &amp; Investment Banking 
-            <br>
-            <img class='companyicon' src='assets/sg.png'>
-    Société Générale (Nov. 2016 - Mar. 2017)
+        <br><img class='companyicon' src='assets/sg.png'>
+        <a href="https://cib.societegenerale.com/en/">Société Générale</a> (Nov. 2016 - Mar. 2017)
     </li>
     <hr>
     <li>Consultant, Infrastrucutre Engineering
-            <br>
-            <img class='companyicon' src='assets/ms.png'>
-    Morgan Stanley (Jul. 2015 - Nov. 2016)
+        <br><img class='companyicon' src='assets/ms.png'>
+        <a href="https://www.morganstanley.com/">Morgan Stanley</a> (Jul. 2015 - Nov. 2016)
     </li>
     <hr>
     <li>IT Consultant, Infrastrucutre Improvment
-            <br>
-            <img class='companyicon' src='assets/hermes.png'>
-    Hermes Medical Solutions (May 2012 - June 2015)
+        <br><img class='companyicon' src='assets/hermes.png'>
+        <a href="https://www.hermesmedical.com/">Hermes Medical Solutions</a> (May 2012 - June 2015)
     </li>
 </ul>
-</div>
 
+	    <hr>
 
-<h2 class="center"> Engineering Projects</h2>
-
-<div class="center">
-        <h3 class="center"><img class='projecticon' src='assets/cubesat.jpg'>   Nanosatellite Design</h3>
-    <ul class="nobullet">
-<li>
-    Project to design, build and test a space-worthy nanosatellite (30cm x 10cm x 10cm).
-    <br>Won first place in the <a href="http://www.csdcms.ca">Canadian Satellite Design Challenge</a>.
-</li>
-<br>
-            <li class="bullet">
-                Multidisciplary project: mechanical, electrical and software systems
+	    <h3 class="Section1">Competitions During Undergrad</h3>
+	    <ul>
+            <li><a href="http://www.csdcms.ca"><img class='projecticon' src='assets/cubesat.jpg'>
+                Canadian Satellite Design Challenge (CSDC)</a>, 2010-2013 – 1st Place
+                <ul>
+                <li>Multidisciplary project involving mechanical, electrical and software systems.</li>
+                <li>Reverse engineered UART protocol for transceiver configuration.</li>
+                <li>Designed communication protocol to provide reliable wireless communication over AX.25 link.</li>
+                <li>Coded userspace drivers for embedded Linux platform.</li>
+                </ul>
             </li>
-
-            <li class="bullet">
-                 Reverse engineered UART protocol for transceiver configuration
+            <li><a href="http://urc.marssociety.org/"><img class='projecticon' src='assets/robotics.jpg'>
+                University Rover Challenge</a>, 2013-2014
+                <ul>
+                <li>Project to design, build and test a proto-Mars rover prototype.</li>
+                <li>Designed and implemented the rover’s communication subsystem.</li>
+                <li>Created benchmarking tool to profile communication subsystem performance.</li>
+                <li>Developed the PID motor controller and the video streaming component.</li>
+                </ul>
             </li>
-                
-            <li class="bullet">
-                    Designed communication protocol to provide reliable wireless communication over AX.25 link
-            </li>
-            <li class="bullet">
-                    Coded userspace drivers for embedded Linux platform
-            </li>
-        <hr>
-    
-    </ul>
+            </ul>
 
-    <h3 class="center"><img class='projecticon' src='assets/robotics.jpg'>  University Rover Challenge</h3>
-    <ul class="nobullet">
-
-        <li>                
-            Project to design, build and test a proto-Mars rover
-        </li><br>
-        <li class="bullet">
-                Designed and realized rover’s communication subsystem
-            </li>
-        <li class="bullet">
-                Created benchmarking tool to profile communication subsystem performance
-            </li>
-            <li class="bullet">
-                Developed PID motor controller
-            </li>
-            <li class="bullet">
-                Coded video streaming component
-            </li>           
-    </ul>
-</div>
-
-
-
-
-
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

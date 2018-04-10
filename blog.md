@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tech Blog
+title: Blog
 ---
 
 ## Tech Blog
@@ -12,3 +12,11 @@ title: Tech Blog
     </li>
   {% endfor %}
 </ul>
+
+## Reading Notes
+
+### []()
+
+## Research Papers Summary
+
+### []()
