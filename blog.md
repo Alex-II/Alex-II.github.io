@@ -6,10 +6,12 @@ title: Blog
 ## Tech Blog
 
 <ul>
-  {% for post in site.posts limit:5 %}
+  {% for post in site.posts %}
+    {% if post.category == "tech" %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
+    {% endif %}
   {% endfor %}
 </ul>
 

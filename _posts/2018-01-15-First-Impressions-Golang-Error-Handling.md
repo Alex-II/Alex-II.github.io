@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "First Impressions of Golang: Error Handling"
+category: tech
 ---
 
 ## First Impressions of Golang: Error Handling
