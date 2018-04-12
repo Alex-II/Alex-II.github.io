@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Golang Error Handling: When Not Importing Creates The Most Dangerous Coupling"
+category: tech
 ---
 
 I’m going to refer to a talk given by Dave Cheney ([Don’t Just Check Errors Handle Them Gracefully](https://www.youtube.com/watch?v=lsBF58Q-DnY&feature=youtu.be)) in which he presents his vision on Go error handling.

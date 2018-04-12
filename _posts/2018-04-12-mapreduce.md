@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Blog
+category: papers
 ---
 
 ## [MapReduce: Simplified Data Processing on Large Clusters by Jeffrey Dean and Sanjay Ghemawa](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)

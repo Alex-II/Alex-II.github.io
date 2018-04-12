@@ -4,7 +4,6 @@ title: Blog
 ---
 
 ## Tech Blog
-
 <ul>
   {% for post in site.posts %}
     {% if post.category == "tech" %}
@@ -17,16 +16,22 @@ title: Blog
 
 ## Reading Notes
 <ul>
+  {% for post in site.posts %}
+    {% if post.category == "notes" %}
     <li>
-        
+      <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
+    {% endif %}
+  {% endfor %}
 </ul>
 
 ## Research Papers Summary
 <ul>
+  {% for post in site.posts %}
+    {% if post.category == "papers" %}
     <li>
-        <a href="_research_summary/mapreduce.html">MapReduce: Simplified Data Processing on Large Clusters by Jeffrey Dean and Sanjay Ghemawa</a>
+      <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
+    {% endif %}
+  {% endfor %}
 </ul>
-
-
