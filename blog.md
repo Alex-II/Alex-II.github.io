@@ -16,7 +16,7 @@ title: Blog
 ## Reading Notes
 <ul>
     <li>
-        [MapReduce: Simplified Data Processing on Large Clusters by Jeffrey Dean and Sanjay Ghemawa](research_summary/mapreduce.html)
+        <a href="research_summary/mapreduce.html">MapReduce: Simplified Data Processing on Large Clusters by Jeffrey Dean and Sanjay Ghemawa</a>
     </li>
 </ul>
 
