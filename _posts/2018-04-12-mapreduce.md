@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog
+title: MapReduce: Simplified Data Processing on Large Clusters by Jeffrey Dean and Sanjay Ghemawa
 category: papers
 ---
 
