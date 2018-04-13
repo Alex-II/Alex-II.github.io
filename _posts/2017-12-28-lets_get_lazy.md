@@ -7,14 +7,14 @@ category: notes
 # [Let’s Get Lazy—The Real Power of Functional Programming by Venkat Subramaniam](https://www.youtube.com/watch?v=ntWdmlrCheY)
 
 ## What does Lazy mean?
-We postpone evaluating an expression.
+We postpone evaluating an expression.  
 Because we may not need to evaluate at all in some cases.
 
 ## Applicative Order vs Normal Order
 ### Applicative Order
 Eager evaluation that, for example, evaluates expressions passed as arguments to functions immediately, and then calls the function with the result
 
-```
+```c
 int a(int p){
    return p + 3;
 }
@@ -29,7 +29,7 @@ b(a(4)); //in this case, a(4) is evaluated first, then the result is immediately
 ### Normal Order
 **Lazy evaluation**, where expressions are only evaluated at the last possible moment
 
-```
+```c
 int a(int p){
   return p + 3;
 }
@@ -48,7 +48,7 @@ c(a(4)); //in this case, a(4) would not be evaluated at all because c() doesn't 
 ```
 
 ## Lazy Evaluation Needs Purity
-Unevaluated expressions are carried around until postponed evaluation.
+Unevaluated expressions are carried around until postponed evaluation.  
 If they depend on an external element whose value might change between the time they are given to be carried around and the time they are evaluated, the result might be unanticipated. 
 
 E.g. A lazily evaluated function uses a variable that is declared outside the function's scope.
@@ -68,7 +68,7 @@ In C# for example, piped (chained) functions evaluate lazily as possible
 
 Let's say we want the square of the first number that's greater than 3 and even
 
-```
+```java
 List<int> numbers = new List<int>{ 1, 2, 3, 5, 4, 6, 6, 7, 8, 9 }
 
 // Given a list of integers of length n
