@@ -9,8 +9,9 @@ category: notes
 ## Function Programming's Promise
 We have
 
-	* Inherent complexity: complexity stemming from domain
-	* Accidental complexity: complexity we create when trying to deal with the inherent complexity 
+i) Inherent complexity: complexity stemming from domain
+
+ii) Accidental complexity: complexity we create when trying to deal with the inherent complexity 
 
 
 **Functional programming removes much of the accidental complexity**
@@ -56,8 +57,9 @@ A higher-order function can (one or more):
 Pure functions don't have side-effects
 
 
-	1. does not change some state outside its scope or has an observable interaction with its calling functions or the outside world besides returning a value, such as mutation of mutable objects (we want deterministic output to our input and the output is solely under the form of the returned value) [wiki, wiki, wiki]
-	2. does not depend on anything that changes as well: The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program
+i) does not change some state outside its scope or has an observable interaction with its calling functions or the outside world besides returning a value, such as mutation of mutable objects (we want deterministic output to our input and the output is solely under the form of the returned value) [wiki, wiki, wiki]
+
+ii) does not depend on anything that changes as well: The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program
 		* We want lazy evaluation
 
 ## Functional Style vs (Purely) Functional Programming 
