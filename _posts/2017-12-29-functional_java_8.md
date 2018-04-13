@@ -169,10 +169,103 @@ If B needs to use A, use composition.\
 If B can be used everywhere A can be used, use inheritance. 
 
 Services of the derived class should require no more and promise no less than the corresponding services of the base class.\
-(Thoughts: derived class should be a fully unnoticed change for the code around it)
+(Thoughts: using a derived class should be a fully transparent and unnoticed change for the code around it)
 
 The user of a base class should be able to use an instance of a derived class without knowing the difference.\
-(thoughts: 'cause you change less shit everywhere)
+
+<u> Good examples of LSP</u>
+
+i) Java, C# don't allow derived classes to be more restrictive with accessibility levels than parent class (promise no less, the client still has access to what base class offered)
+
+ii) Java doesn't allow derived class to throw exceptions the base class doesn't throw
+
+iii) Java doesn't allow a collection of derived objects to be passed to methods that expect a collection of the base object, even though the derived objects extend the base objects.
+
+<u>Example of breached LSP</u>
+
+i) Java's Stack inherits from Vector but is more restrictive than Vector (Vector allows arbitrary insertion/removal, Stack doesn't)\
+It should be composition instead: the Stack has a private Vector member that it uses internally 
+
+Inheritance is used because it's easy: we inherit to get access to methods and members from base class easily.\
+But we want best-of-both-worlds and don't take on the subsistutability responsibility. \
+Solution: IDEs will allow you to convert inheritance to composition easily
+
+Sometimes, not violating LSP means violating DRY and OCP:\
+```java
+class A{
+  public void f1(){}
+}
+
+class B{
+private final A _a = new A();
+
+public void f1(){
+   _a.f1();
+  }
+}
+```
+We see composition above but look at that DRY violation, we need to duplicate the _public void f1_.\
+And if A::f1() changes name or parameters, we need to change B::f1()  too, violating OCP\
+(Thoughts: I'd argue that changing that *public* method breaches an interface contract anyways)
+
+If need be, violate OCP and DRY, don't violate LSP.\
+Violating LSP here would cause other more numerous DRY and OCP violations in other parts of the code.
+
+Groovy, like Go, works around this by having class B expose methods of class A as if they are it's own, even though class A is a member of class B.
+
+```groovy
+class A{
+   void public f1(){}
+}
+
+//no inheritance
+class B{
+   @Delegate A a = new A();
+  
+   void public f2(){}
+}
+
+B b = new B();
+b.f2(); //this is defined in class B
+b.f1(); //this is defined in class A, but it's accessible through class B transparently 
+```
+
+In this example, the bytecode/binary **will** contain some duplication but the source code is free from it and changing the source will also transparently and painlessly change the bytecode/binary. No conflicts will arise anymore.
+
+(Thought: this example of composition with class B exposing class A's methods as if they are its own still has caveats. It tightly couples class A and B. Clients of class B are actually direct clients of class A, unbeknownst to them. So if class A changes its method names, clients of class B will be directly impacted, for example. If class B has a redundant method, it could shield its clients for class A changes.)
+
+## Keep Interfaces Cohesive with Interface Segregation Principle
+Make interfaces cohesive too, not giant blobs of everything\
+Make smaller interfaces instead of giant ones
+
+Given a standard clock that tells the time, has a radio and has an alarm.\
+We could describe it as implementing three distinct interfaces.
+```java
+class Clock implements TimePiece, Alarm, Radio {}
+```
+As such, a user who only wants a TimePiece would wait for a concrete class implementing the TimePiece interface.\
+In this example, it would be our Clock class.
+
+The functionality described in the TimePiece interface is cohesive and fairly unlike the Radio functionality.
+
+## Decouple using Dependency Inversion Principle 
+Depend on abstraction (like interfaces) instead of concrete classes
+
+DI solves OPC often enough
+
+There is a cost to using DI (and interfaces), an increase in complexity
+
+## When and How to Apply These Principles
+
+Strategic Design: vision and direction, used somewhat
+Tactical Design: implementation, used intensely 
+
+These principles are highlighted when using TDD, before even writing specific code
+
+
+
+
+
 
 
 
