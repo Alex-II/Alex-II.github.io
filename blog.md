@@ -15,6 +15,7 @@ title: Blog
 </ul>
 
 ## Reading Notes, Talk Notes
+Notes trying to capture the essence of talks or readings, occasioanlly with my own thoughts and interpreations.
 <ul>
   {% for post in site.posts %}
     {% if post.category == "notes" %}
