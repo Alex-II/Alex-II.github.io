@@ -55,9 +55,9 @@ Implement things *later rather than now*, if:
 
 Why implement later?
 
-	* we might learn more about the domain/vision/design of the thing we're implementing  e.g. we might figure out what DB features we need as the requirements clarify so we implement prod DB at the end
-	* we might turn out to not need that thing
-	* (Thoughts: we might do some other high-ROI activity instead)
+i) we might learn more about the domain/vision/design of the thing we're implementing e.g. we might figure out what DB features we need as the requirements clarify so we implement prod DB at the end
+ii) we might turn out to not need that thing
+iii) (Thoughts: we might do some other high-ROI activity instead)
 
 Postpone != procrastinate (procrastination is not getting things done that should have been done)
 
@@ -153,8 +153,8 @@ Too extensible out-of-the-box makes things overly complex (Thought: and YAGNYet)
 
 How to know how extensible to make it? Need both:
 
-	* know software: know the limitation of the language, frameworks 
-	* know domain: understand what could be probably extended (e.g. might have a car with more or less seats, probably not have a car with more than 1 roof)
+\* know software: know the limitation of the language, frameworks   
+\* know domain: understand what could be probably extended (e.g. might have a car with more or less seats, probably not have a car with more than 1 roof)
 
 
 Find domain expert to understand what could be extended.  
