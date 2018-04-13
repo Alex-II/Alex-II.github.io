@@ -4,7 +4,7 @@ title:  "Scalability! But at what COST?"
 category: notes
 ---
 
-# [Scalability! But at what COST?] (https://www.usenix.org/system/files/conference/hotos15/hotos15-paper-mcsherry.pdf)
+# [Scalability! But at what COST?](https://www.usenix.org/system/files/conference/hotos15/hotos15-paper-mcsherry.pdf)
 
 Optimized single-threaded work *can* dominate parallelization.
 
@@ -22,4 +22,4 @@ The cost of building systems that use parallelization carries overhead
 
 This excerpt from the paper illustrates the idea:
 
-![alt text](scalability_but_at_what_cost.png "Logo Title Text 1")
+![](scalability_but_at_what_cost.png "Logo Title Text 1")
