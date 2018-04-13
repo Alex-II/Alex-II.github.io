@@ -14,7 +14,7 @@ title: Blog
   {% endfor %}
 </ul>
 
-## Reading Notes
+## Reading and Talks Notes
 <ul>
   {% for post in site.posts %}
     {% if post.category == "notes" %}
