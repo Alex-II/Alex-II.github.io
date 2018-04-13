@@ -36,7 +36,7 @@ Do not confuse simple with familiar.
 Familiar means we're used to it, so it's easy for us, but it doesn't mean it's simple.
 
 ## Complexity 
-Inherent complexity: comes from the problem domain\
+Inherent complexity: comes from the problem domain  
 Accidental complexity: comes from our implementation, e.g. deciding to use multi-threading 
 
 Might be familiar with multi-threading so it's easy for us, but it's still not simple.
@@ -61,7 +61,7 @@ Why implement later?
 
 Postpone != procrastinate (procrastination is not getting things done that should have been done)
 
-Don't finalize one component at a time when several components interconnect.\
+Don't finalize one component at a time when several components interconnect.  
 Work on several at a time and integrate them as they go along
 
 **Postpone until last responsible moment**
@@ -74,24 +74,24 @@ We take decisions early to test them and we're stuck with them.
 With good testing, we can postpone certain decisions of implementations.
 
 ## Cohesion
-Focused single responsibility\
+Focused single responsibility  
 Like things together, unlike things stay apart.
 (Thoughts: makes code more readable, easier to reason about)
 
-Allows per-responsibility code to only change when that responsibility needs to change.\
-Instead of changing often because of many responsibilities\
+Allows per-responsibility code to only change when that responsibility needs to change.  
+Instead of changing often because of many responsibilities  
 (Thoughts: or worse many pieces of code change because they share the responsibility among each other)
 
 Changing code is expensive, we want to affect the least amount of code when we introduce a change in the system.
 
 ## Coupling
-More dependencies, more coupling \
+More dependencies, more coupling   
 Inheritance is a form of dependency 
 
-Eliminate coupling when possible\
+Eliminate coupling when possible  
 Make loose coupling otherwise
 
-Depending on a class, tight coupling\
+Depending on a class, tight coupling  
 Depending on an interface, looser coupling
 
 (Thoughts: coupling is how many secondary changes are required after a primary change. If changing one class means changing all the classes in some fashion, not cool)
@@ -103,10 +103,10 @@ We want this!
 Reduce coupling by using interfaces
 
 ## Keep It DRY
-Don't duplicate code itself\
+Don't duplicate code itself  
 Don't duplicate effort: similar subsets of code in different places but doing the same thing
 
-Every piece of knowledge in a system needs to have a single authoritative representation\
+Every piece of knowledge in a system needs to have a single authoritative representation  
 (Thoughts: Domain Driven Design-style)
 
 Refactor when you notice duplication
@@ -119,36 +119,36 @@ Don't hastily add abstractions before signs of duplication - remember YAGNYet
 Be able to describe the primary responsibility of a class, method, component without "and"s
 
 ### Long Methods
-hard to test: permutation of input, output, states\
-hard to read\
-hard to remember\
-hard to debug\
-obscured business rules\
-hard to reuse\
-leads to duplication (because it's hard to reuse)\
-many reasons to change (and still hard to test!)\
-can't be optimized\ 
-mixed levels of abstraction\ 
-lack cohesion, high coupling\
+hard to test: permutation of input, output, states  
+hard to read  
+hard to remember  
+hard to debug  
+obscured business rules  
+hard to reuse  
+leads to duplication (because it's hard to reuse)  
+many reasons to change (and still hard to test!)  
+can't be optimized   
+mixed levels of abstraction   
+lack cohesion, high coupling  
 
 ### How Long to Make Methods?
 SLAP: single level of abstraction
 
-All code in a method should operate on the same level of abstraction.\
-Don't mix high-level calls with nitty-gritty byte parsing.\
-Put byte parsing in a method that only does nitty-gritty stuff\
+All code in a method should operate on the same level of abstraction.  
+Don't mix high-level calls with nitty-gritty byte parsing.  
+Put byte parsing in a method that only does nitty-gritty stuff  
 (Thoughts: keep a sort of level of abstraction-cohesiveness) 
 
-Comment _why_, not _what_\
+Comment _why_, not _what_  
 If you need to comment _what_, you need to refactor
 
 ## Don't Violate the Open-Close Principle
 Open for extension; closed from modification
 
-Closed from modification: don't change older code when adding new features\
+Closed from modification: don't change older code when adding new features  
 Open for extension: still add new features through polymorphism, reflection and loose coupling 
 
-**Code is extensible for some particular use case, not infinitely extensible.**\
+**Code is extensible for some particular use case, not infinitely extensible.**  
 Too extensible out-of-the-box makes things overly complex (Thought: and YAGNYet)
 
 How to know how extensible to make it? Need both:
@@ -157,7 +157,7 @@ How to know how extensible to make it? Need both:
 	* know domain: understand what could be probably extended (e.g. might have a car with more or less seats, probably not have a car with more than 1 roof)
 
 
-Find domain expert to understand what could be extended.\
+Find domain expert to understand what could be extended.  
 If we can't figure out it, use YAGNYet, and make it extensible when needed, at the last responsible moment. 
 
 ## Liskov's Substitution Principle
@@ -165,13 +165,13 @@ If we can't figure out it, use YAGNYet, and make it extensible when needed, at t
 
 Inheritance should be used only for subsistutability.
 
-If B needs to use A, use composition.\
+If B needs to use A, use composition.  
 If B can be used everywhere A can be used, use inheritance. 
 
-Services of the derived class should require no more and promise no less than the corresponding services of the base class.\
+Services of the derived class should require no more and promise no less than the corresponding services of the base class.  
 (Thoughts: using a derived class should be a fully transparent and unnoticed change for the code around it)
 
-The user of a base class should be able to use an instance of a derived class without knowing the difference.\
+The user of a base class should be able to use an instance of a derived class without knowing the difference.  
 
 <u> Good examples of LSP</u>
 
@@ -183,14 +183,14 @@ iii) Java doesn't allow a collection of derived objects to be passed to methods 
 
 <u>Example of breached LSP</u>
 
-i) Java's Stack inherits from Vector but is more restrictive than Vector (Vector allows arbitrary insertion/removal, Stack doesn't)\
+i) Java's Stack inherits from Vector but is more restrictive than Vector (Vector allows arbitrary insertion/removal, Stack doesn't)  
 It should be composition instead: the Stack has a private Vector member that it uses internally 
 
-Inheritance is used because it's easy: we inherit to get access to methods and members from base class easily.\
-But we want best-of-both-worlds and don't take on the subsistutability responsibility. \
+Inheritance is used because it's easy: we inherit to get access to methods and members from base class easily.  
+But we want best-of-both-worlds and don't take on the subsistutability responsibility.   
 Solution: IDEs will allow you to convert inheritance to composition easily
 
-Sometimes, not violating LSP means violating DRY and OCP:\
+Sometimes, not violating LSP means violating DRY and OCP:  
 ```java
 class A{
   public void f1(){}
@@ -204,11 +204,11 @@ public void f1(){
   }
 }
 ```
-We see composition above but look at that DRY violation, we need to duplicate the _public void f1_.\
-And if A::f1() changes name or parameters, we need to change B::f1()  too, violating OCP\
+We see composition above but look at that DRY violation, we need to duplicate the _public void f1_.  
+And if A::f1() changes name or parameters, we need to change B::f1()  too, violating OCP  
 (Thoughts: I'd argue that changing that *public* method breaches an interface contract anyways)
 
-If need be, violate OCP and DRY, don't violate LSP.\
+If need be, violate OCP and DRY, don't violate LSP.  
 Violating LSP here would cause other more numerous DRY and OCP violations in other parts of the code.
 
 Groovy, like Go, works around this by having class B expose methods of class A as if they are it's own, even though class A is a member of class B.
@@ -235,15 +235,15 @@ In this example, the bytecode/binary **will** contain some duplication but the s
 (Thought: this example of composition with class B exposing class A's methods as if they are its own still has caveats. It tightly couples class A and B. Clients of class B are actually direct clients of class A, unbeknownst to them. So if class A changes its method names, clients of class B will be directly impacted, for example. If class B has a redundant method, it could shield its clients for class A changes.)
 
 ## Keep Interfaces Cohesive with Interface Segregation Principle
-Make interfaces cohesive too, not giant blobs of everything\
+Make interfaces cohesive too, not giant blobs of everything  
 Make smaller interfaces instead of giant ones
 
-Given a standard clock that tells the time, has a radio and has an alarm.\
+Given a standard clock that tells the time, has a radio and has an alarm.  
 We could describe it as implementing three distinct interfaces.
 ```java
 class Clock implements TimePiece, Alarm, Radio {}
 ```
-As such, a user who only wants a TimePiece would wait for a concrete class implementing the TimePiece interface.\
+As such, a user who only wants a TimePiece would wait for a concrete class implementing the TimePiece interface.  
 In this example, it would be our Clock class.
 
 The functionality described in the TimePiece interface is cohesive and fairly unlike the Radio functionality.
