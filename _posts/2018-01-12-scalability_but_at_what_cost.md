@@ -22,4 +22,5 @@ The cost of building systems that use parallelization carries overhead
 
 This excerpt from the paper illustrates the idea:
 
-![](scalability_but_at_what_cost.png "Logo Title Text 1")
+
+![scalability_but_at_what_cost.png](scalability_but_at_what_cost.png)
