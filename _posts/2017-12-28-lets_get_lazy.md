@@ -23,7 +23,10 @@ int b(int q){
   return q + 4;
 }
 
-b(a(4)); //in this case, a(4) is evaluated first, then the result is immediately passed to b()
+//in this case, a(4) is evaluated first
+//then the result is immediately passed to b()
+b(a(4)); 
+ 
 ```
 
 ### Normal Order
@@ -42,9 +45,13 @@ int c(int s){
   return 7;
 }
 
-b(a(4)); //in this case, a(4) is evaluated only if b() makes use of it, otherwise, it's never evaluated
+//in this case, a(4) is evaluated only if b() makes use of it
+//otherwise, it's never evaluated
+b(a(4)); 
 
-c(a(4)); //in this case, a(4) would not be evaluated at all because c() doesn't actually use the variable 's' bound to the result of a(4)
+//in this case, a(4) would not be evaluated at all
+// because c() doesn't actually use the variable 's' bound to the result of a(4)
+c(a(4)); 
 ```
 
 ## Lazy Evaluation Needs Purity
@@ -73,7 +80,9 @@ List<int> numbers = new List<int>{ 1, 2, 3, 5, 4, 6, 6, 7, 8, 9 }
 
 // Given a list of integers of length n
 // You'd think this would be O(3n) or such
-// Like you'd find all the GT3 in the list, then all the even ones among them, the double them all, then pick the first
+// As in, you'd find all the >3 in the list,
+// then all the even ones among them,
+// the double them all, then pick the first
 // but..
 Console.WriteLine(
    numbers.Where(IsGT3) //instead only 1,2,3, 5, and 4 reach here 
