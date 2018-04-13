@@ -57,7 +57,7 @@ A higher-order function can (one or more):
 Pure functions don't have side-effects
 
 
-i) does not change some state outside its scope or has an observable interaction with its calling functions or the outside world besides returning a value, such as mutation of mutable objects (we want deterministic output to our input and the output is solely under the form of the returned value) [wiki, wiki, wiki]
+i) does not change some state outside its scope or has an observable interaction with its calling functions or the outside world besides returning a value, such as mutation of mutable objects (we want deterministic output to our input and the output is solely under the form of the returned value)
 
 ii) does not depend on anything that changes as well: The function result value cannot depend on any hidden information or state that may change while program execution proceeds or between different executions of the program
 		* We want lazy evaluation
