@@ -80,12 +80,12 @@ List<int> numbers = new List<int>{ 1, 2, 3, 5, 4, 6, 6, 7, 8, 9 }
 
 // Given a list of integers of length n
 // You'd think this would be O(3n) or such
-// As in, you'd find all the >3 in the list,
+// As in, you'd expect you first need to find all the >3 in the list,
 // then all the even ones among them,
 // the double them all, then pick the first
 // but..
 Console.WriteLine(
-   numbers.Where(IsGT3) //instead only 1,2,3, 5, and 4 reach here 
+   numbers.Where(IsGT3) //instead, only 1,2,3, 5, and 4 reach here 
           .Where(IsEven) // only 5 and 4 reach here
           .Select(DoubleIt) // 4 gets doubled
           .First()); // done
