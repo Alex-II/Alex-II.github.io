@@ -14,7 +14,7 @@ title: Blog
   {% endfor %}
 </ul>
 
-## Reading and Talks Notes
+## Reading Notes, Talk Notes
 <ul>
   {% for post in site.posts %}
     {% if post.category == "notes" %}
@@ -25,7 +25,7 @@ title: Blog
   {% endfor %}
 </ul>
 
-## Research Papers Summary
+## Research Papers Summaries
 <ul>
   {% for post in site.posts %}
     {% if post.category == "papers" %}
