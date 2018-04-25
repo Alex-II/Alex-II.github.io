@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Scalability! But at what COST?"
-category: notes
+category: papers
 ---
 
 # [Scalability! But at what COST?](https://www.usenix.org/system/files/conference/hotos15/hotos15-paper-mcsherry.pdf)
