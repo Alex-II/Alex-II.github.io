@@ -53,7 +53,7 @@ The authors list a few technical design considerations:
 
 <u> Redirection </u>
 The authors discuss three types of redirection:
-1. **Bounce Redirection**  
+**1. Bounce Redirection**  
 All ingress traffic is first sent to the cloud provider for middlebox processing, returned to the enterprise. All egress traffic is similary sent to the cloud provider before returning to the APLOMB to be forwarded back to an external destination.
 ![APLOMB_bounce_redirection.png](/assets/APLOMB_bounce_redirection.png)    
 
@@ -63,7 +63,7 @@ All ingress traffic is first sent to the cloud provider for middlebox processing
 **Cons**:  
 + increasd latency, but manageable if round-trip time to provider is small  
 
-2. **IP Redirection**  
+**2. IP Redirection**  
 Cloud provider advertises as the enterprise network IP, a sanctioned man-in-the-middle.   
 ![APLOMB_IP_redirection.png](/assets/APLOMB_IP_redirection.png)   
 
@@ -74,7 +74,7 @@ Cloud provider advertises as the enterprise network IP, a sanctioned man-in-the-
 + More complex to set up, change
 + Multi-PoP issue: middleboxes usually need to maintain state (they need to see traffic going from client a to server b and vice versa to do their job correctly). Using IP redirection, these sessions are hard to keep track of/guarantee.
  
-3. **DNS Redirection**  
+**3. DNS Redirection**  
 The cloud provider handles the DNS service. When a client asks for the enterprise network, they are given the cloud provider's IP. Again a DNS-based authorized man-in-the-middle.
 
 ![APLOMB_DNS_redirection.png](/assets/APLOMB_DNS_redirection.png)    
