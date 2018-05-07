@@ -17,7 +17,6 @@ The middlebox deployement analysis revealed:
 ![APLOMB_human_middlebox_ratio.png](/assets/APLOMB_human_middlebox_ratio.png)  
 + Deployment costs (thoughts: again, estimates, and it would have been interesting to have a per-middlebox cost, to get a feeling for economies at scale for large deployements)
 ![APLOMB_cost_middlebox_5_year_deployments.png](/assets/APLOMB_cost_middlebox_5_year_deployments.png)  
-+ Specialized middlebox 
 
 General benefits of Cloud Middleboxes (same as cloud computing/storage):  
 + Pay-per-use: reduces the need for overprovisioning for peak usage or hardware failures.
@@ -28,7 +27,7 @@ Specific benefits of Cloud Middleboxes:
 + Trying without sunk cost: buy-the-hardware on-premise ecosystem means exploring new middleboxes and their features is costly.
 + Decoupling features from hardware: on-premise middlebox hardware and software come as a package, so a change in (software) features forces purchasing of new hardware. 
 + Simpler configuration, monitoring: enterprise administrators can now configure and monitor *policies* (intentions) and no longer need to also to deal with middlebox-specific configurations and gotchas.
-+ Reduced failures, training: because of the specialized nature of middleboxes middlebox misconfiguration is often (estimated) to be the common cause of failures, and this requires substantial amount of training to prevent.
++ Reduced failures, training: because of the specialized nature of middleboxes, middlebox misconfiguration is often (estimated) to be the common cause of failures, and this requires substantial amount of training to prevent.
 
 (thoughts: evidently, the bigger the enterprise, economies of scale appear and the training and configuration managment efforts are amortized, as well as a purchasing power leverage with respect to middlebox OEMs. Still, profiting from these phenomena requies the enterprise to seize the oppurtinity and care enough to invest energy into negociating with middlebox OEMs to, for example, provide a more programatic access to configuration so as to develop a unified middlebox managment and monitoring system.)
 
@@ -63,6 +62,7 @@ All ingress traffic is first sent to the cloud provider for middlebox processing
 
 **Cons**:  
 + increasd latency, but manageable if round-trip time to provider is small  
+
 2. **IP Redirection**  
 Cloud provider advertises as the enterprise network IP, a sanctioned man-in-the-middle.   
 ![APLOMB_IP_redirection.png](/assets/APLOMB_IP_redirection.png)   
@@ -119,13 +119,13 @@ The authors then proceed to use as many off-the-shelf components as possible to 
 
 They show that performance and bandwidth do not suffer using APLOMB (and sometimes there are gains). 
 
-<u> Bandwidth Cost </u>
+<u> Bandwidth Cost </u>  
 The authors acknowledge that bandwidth is more costly when using Amazon's services but propose that:
 1. a middlebox-dedicated company would be more sensitive to bandwidth costs
 2. even Amazon has a tier offering better pricing for high-volume users
 3. the bandwidth cost is offset by a foreseen decrease capital and operation expenses
 
-<u> Security </u>
+<u> Security </u>  
 The paper acknowledges that cloud middlebox providers will face the same issues and questions as cloud compute and storage providers do, in terms of a third party processing and storing sensitive enterprise data.
 
 They do note that data-in-transit in encrypted between the APLOMB and the cloud provider.
