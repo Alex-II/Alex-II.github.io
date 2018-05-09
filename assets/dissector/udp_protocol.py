@@ -1,12 +1,20 @@
 from multiprocessing import Process
-import socket
+import socket, argparse
 
 host_ip = "127.0.0.1"
 port = 5006
-message="this message should fit an UDP payload of 1024 bytes"
+
+
+
+
+
+
+
+
+
 
 def main():
-    send_udp(bytes(message, 'utf-8'))
+    send_udp(bytes("woof", 'utf-8'))
 
 def send_udp(payload):
     sock = socket.socket(socket.AF_INET,  # Internet
@@ -15,8 +23,9 @@ def send_udp(payload):
     sock.bind((host_ip, port))
     start_sender_process(port,payload)
 
-    data, addr = sock.recvfrom(1024)
-    print("received payload:", data)
+    while True:
+        data, addr = sock.recvfrom(1024)
+        print("received payload:", data)
 
 def start_sender_process(port, message):
         p = Process(target=send_message, args=(port,message))
