@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Setting Up for Dissector Writing"
-category: extra_tech
+category: tech
 ---
 # Setting Up for Dissector Writing
 Some minimal information you need to know in order to write Wireshark dissectors.
