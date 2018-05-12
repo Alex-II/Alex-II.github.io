@@ -8,14 +8,12 @@ Some minimal information you need to know in order to write Wireshark dissectors
 
 I'm assuming your Wireshark dissectors are written in Lua.
 
-# Installing Wireshark
-
-## Windows, MacOS
+# Installing Wireshark on Windows, MacOS
 On Windows and MacOS, we go to [Wireshark's official](https://www.wireshark.org/download.html); I'm going to assume you're using the 64-bit installer.
 
 I haven't had good experience with WinPcap so I didn't install that component. 
 
-## Linux
+# Installing Wireshark on Linux
 Each distro is somehow always a special snowflake but generally your GUI software / application manager should have it.
 If you're using a terminal package manager (apt,yum,dnf, etc), know that Wireshark also has a non-GUI version so keep that in mind (sometimes the GUI version is called *wireshark-qt*).
 
@@ -55,14 +53,12 @@ Let's give it a try:
 Should look like this:
 ![/assets/dissector/wireshark_dummy_lua_loaded.png](/assets/dissector/wireshark_dummy_lua_loaded.png)
 
-# Packet Capture
-
-## Windows
+# Packet Capture on Windows
 If you need to capture packets, I've had a good experience with RawCap. WinPcap has all sorts of limitations, especially on capturing on localhost (and apparently, problems with capturing some wireless interfaces).
 
 Be aware that RawCap will require elevated privileges on your machine and that's a security issue. If you trust RawCap won't do anything bad (like I do), go get [RawCap](http://www.netresec.com/?page=RawCap).
 
-## Linux/MacOS
+# Packet Capture on Linux/MacOS
 
 Wireshark should be good enough for packet capture in Linux.
 
