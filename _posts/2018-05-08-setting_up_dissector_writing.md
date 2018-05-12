@@ -24,12 +24,7 @@ Wireshark should have a GUI and have this Lua menu here:
 
 If it doesn't, you might not be able to add your Lua dissector.
 
-**Issues:**
----
-+ On Fedora, no Lua menu  
-
-You probably need to also install *wireshark-devel*
-
+On Fedora, for the Lua menu, you probably need to also install *wireshark-devel* with:
 ```
 sudo dnf install wireshark-devel
  ```
@@ -61,12 +56,14 @@ Should look like this:
 ![/assets/dissector/wireshark_dummy_lua_loaded.png](/assets/dissector/wireshark_dummy_lua_loaded.png)
 
 # Packet Capture
+
 ## Windows
 If you need to capture packets, I've had a good experience with RawCap. WinPcap has all sorts of limitations, especially on capturing on localhost (and apparently, problems with capturing some wireless interfaces).
 
 Be aware that RawCap will require elevated privileges on your machine and that's a security issue. If you trust RawCap won't do anything bad (like I do), go get [RawCap](http://www.netresec.com/?page=RawCap).
 
 ## Linux/MacOS
+
 Wireshark should be good enough for packet capture in Linux.
 
 # Cool Tool Mention: Protocol ASCII Representation
