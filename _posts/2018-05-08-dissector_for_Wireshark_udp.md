@@ -1,90 +1,16 @@
 ---
 layout: post
 title:  "Simple Wireshack Dissector for a simple UDP Protocol"
-category: wip
+category: tech
 ---
 
-# Simple Wireshack Dissector for a simple UDP Protocol
+# Wireshark Dissector for an UDP Protocol
+In this post, we'll explore building a simple UDP protocol dissector. Breifly, a dissector is used by Wireshark to identify a protocol's fields in the packets, as well as display, and filter information about packets (e.g. a DNS dissector will identify the URL queried, the TTL, etc.)
 
-We'll explore on how to create a dissector for an UDP protocol.
-We'll write in Lua, perf C/C++
+I've found a good amount of API documentation and more advanced tutorials but nothing covering the basics like I would have liked when I recently had to build an UDP protocol dissector myself.
 
-Reminds  http://wsgd.free.fr/faq.html
+This custom dissector will be in written in Lua; dissectors can be written in C++ if performance is needed.
 
-We assume:
-+ Wireshark is somewhat familiar to you: you've played with it a bit and you have an understanding of its basic features 
-+ You can edit files Lua files in a Lua-friendly editor (at least syntax highlight is recommended)
-
-# What Can a Dissector Do?
-
-
-
-## Pertinent Fields in a Packet
-
-## Query Filter
-
-
-
-# Installing Wireshark
-## Windows
-On Windows, we go to [Wireshark's official](https://www.wireshark.org/download.html); I'm going to assume you're using the 64-bit installer.
-
-When the installer prompts for what to install:
-+ *Choose Components* Step: the defaults are fine
-+ *Packet Capture* Step: We **don't need WinPcap** but you may install it if you want to.
-+ Other steps: as you wish
-
-## MacOS
-
-????
-
-## Linux
-Each distro is somehow always a special snowflake but generally your package manager should have Wireshark.   
-Know that Wireshark also has a non-GUI version so keep in mind you might have installed the wrong one.
-
-A properly-installed Wireshark will have a GUI and have this Lua menu here:
-![wireshark_lua_menu.png](/assets/dissector/wireshark_lua_menu.png)
-
-**Issues:**
-
----
-+ On Fedora, no Lua menu  
-
-You probably need to also install *wireshark-devel*
-
-```
-sudo dnf install wireshark-devel
- ```
-
-# Lua Editor
-The editor is up to you, the smarter the better generally.
-
-I'm using [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/) with a Lua plugin.
-
-Find your IDE or editor of your choice that supports, at a minimum, Lua syntax highlight.
-
-# Loading Dissectors into Wireshark
-Wireshark will load dissectors from specific folders/directories.
-
-To find out which, open Wireshark, go to Help -> About -> Folders.  
-You might need to create these folders if they don't exist.
-
-For example, on Windows, I place my Lua-written dissectors in **Personal Plugins**:
-```
-Personal Lua Plugins		C:\Users\alex\AppData\Roaming\Wireshark\plugins
-```
-
-Let's give it a try:
-1. Place [this dummy Lua dissector](/assets/dissector/dummy.lua) in either the *personal plugins* or *global plugins* folder
-2. Open [this dummy pcap file](/assets/dissector/dummy.pcap) pcap file in Wireshark
-3. Reload the Lua plug-ins with Ctrl+Shift+L or *Analyze->Reload Lua Plugins*
-
-Should look like this:
-![/assets/dissector/wireshark_dummy_lua_loaded.png](/assets/dissector/wireshark_dummy_lua_loaded.png)
-
-4. Go ahead and remove the dummy.lua file
-
-# Dissector for an UDP Protocol
 ## UDP Protocol 
 We're going to invent ourselves a simple UDP protocol to then build a simple dissector around it.
 
@@ -118,62 +44,234 @@ We have 4 fields in our protocol:
 ## Dissector
 Our dissector will be a Lua file that Wireshark will load and use to parse our UDP packet.
 
-### Registering Our Protocol on UDP Port 65065
+### Registering Our Protocol on UDP Port 55055
 In our Lua file:
 ```Lua
 --we create our new protocol
 local proto_health = Proto.new("health", "Health Protocol")
 
---the `dissector()` method is called by Wireshark when parsing our packets
-function proto_health.dissector(buf, pinfo, tree)
+-- the `dissector()` method is called by Wireshark when parsing our packets
+function proto_health.dissector(buffer, pinfo, tree)
+   
 end
 
---we register our protocol on UDP port 65065 
-udp_table = DissectorTable.get("udp.port"):add(65065, proto_health)
+--we register our protocol on UDP port 55055
+udp_table = DissectorTable.get("udp.port"):add(55055, proto_health)
 ```
 
 ### Declaring Our Protocol Fields
 We first declare our field types and size for the fields in the protocol we invented.
 
+There are
++ (normal) fields: they map to the packet bytes.
++ generated fields: they are derived information from the packet we wish to display in the tree (e.g. the human-readable meaning of a code) and make searchable in the display filter.
+
+
 ```Lua
 local proto_health = Proto.new("health", "Health Protocol")
 
 --- --- Our Fields --- ---
+-- These are the fields defined in our protocol
+-- They will also be searchable in the display filter
 -- for `field_version`:
 --  type/size of this field (here uint8, a byte).
---  "health.version" is used in the display filter to query/seach/narrow down a list of packets (e.g. health.version == 1)
---  "Version" is the display name when drilling down in the packet
---  `base.DEC` is the repsentation of the uint8 (we could have used base.HEX)
-field_version = ProtoField.uint8("health.version", "Version", base.DEC)
+--  "health.version" to be  used in the display filter to query/search/narrow down a list of packets (e.g. health.version == 1)
+--  "Version" is the display name/field label shown when drilling down in a packet
+--  `base.DEC` is the representation of the uint8 (we could have used base.HEX)
+local field_version = ProtoField.uint8("health.version", "Version", base.DEC)
+local field_health = ProtoField.uint8("health.code", "Health Code", base.HEX)
+local field_groupid = ProtoField.uint16("health.group", "Group ID", base.HEX)
+-- guid field has its own representation
+local field_workerguid = ProtoField.guid("health.guid", "Worked ID")
 
--- we get to use more of the convenience Field constructors
-field_health = ProtoField.uint8("health.health", "Health", base.HEX)
-field_groupid = ProtoField.uint16("health.group", "Group ID", base.HEX)
--- GUID has its own representation
-field_workerguid = ProtoField.guid("health.guid", "Worked ID")
+--- Our Generated Fields --- 
+-- Generated fields are fields derived from information found in the packet
+-- In this case, we want to display a string representation of the health code
+generated_health_name = ProtoField.string("health.status", "Health Status")
 
-function proto_health.dissector(buf, pinfo, tree)
-    --
+-- we attach all fields (normal and generated) to our protocol
+proto_health.fields = {field_version, field_health, field_groupid,
+ field_workerguid, generated_health_name}
+
+function proto_health.dissector(buffer, pinfo, tree)
+
 end
 
-udp_table = DissectorTable.get("udp.port"):add(65065, proto_health)
+udp_table = DissectorTable.get("udp.port"):add(55055, proto_health)
 ```
 
-### Mapping Fields to Packet Bytes
-We've declared our fields type/size but now we need to tell Wireshark where they are in the packet.
+
+### Dissecting the Protocol
+
 ```Lua
 local proto_health = Proto.new("health", "Health Protocol")
-field_version = ProtoField.uint8("health.version", "Version", base.DEC)
-field_health = ProtoField.uint8("health.health", "Health", base.HEX)
-field_groupid = ProtoField.uint16("health.group", "Group ID", base.HEX)
-field_workerguid = ProtoField.guid("health.guid", "Worked ID")
 
+local field_version = ProtoField.uint8("health.version", "Version", base.DEC)
+local field_health = ProtoField.uint8("health.code", "Health Code", base.HEX)
+local field_groupid = ProtoField.uint16("health.group", "Group ID", base.HEX)
+local field_workerguid = ProtoField.guid("health.guid", "Worked ID")
+
+generated_health_name = ProtoField.string("health.status", "Health Status")
+
+proto_health.fields = {field_version, field_health, field_groupid,
+ field_workerguid, generated_health_name}
+
+-- the `dissector()` method is called by Wireshark when parsing our packets
 -- `buffer` holds the UDP payload, all the bytes from our protocol
--- `tree` is the structure we see when dissecting one particular packet
+-- `tree` is the structure we see when inspecting/dissecting one particular packet
 function proto_health.dissector(buffer, pinfo, tree)
-    
-end
+    -- Changing the value in the protocol column (the Wireshark pane that displays a list of packets) 
+    pinfo.cols.protocol = "Health Report"
 
-udp_table = DissectorTable.get("udp.port"):add(65065, proto_health)
+    -- We label the entire UDP payload as being associated with our protocol
+    local payload_tree = tree:add( proto_health, buffer() )
+
+    -- For the `version` field, we have:
+    -- the position of the first byte (which is 0 here because `version` byte is the first one in the protocol)
+    -- how long (in bytes) this field is (1 in our case)
+    local version_pos = 0
+    local version_len = 1
+    -- `version_buffer` holds the range of bytes
+    local version_buffer = buffer(version_pos,version_len)
+    -- with `add()`, we're associating the range of bytes from `buffer` with our field we declared earlier
+    -- this means:
+    -- (1) the values is now searchable in the display filter (e.g.we can filter a list of packets with health.version == 1)
+    -- (2) Wireshark will create an entry in the packet inspection tree, highlight which part of the packet we're referencing and show a label with our field name and value
+    payload_tree:add(field_version, version_buffer)
+
+    local health_pos = version_pos + version_len
+    local health_len = 1
+    local health_buffer = buffer(health_pos,health_len)
+    payload_tree:add(field_health, health_buffer)
+
+    local groupid_pos = health_pos + health_len
+    local groupid_len = 2
+    local groupid_buffer = buffer(groupid_pos, groupid_len)
+    payload_tree:add(field_groupid, groupid_buffer)
+
+    local workerguid_pos = groupid_pos + groupid_len
+    local workerguid_len = 16
+    local workerguid_buffer = buffer(workerguid_pos,workerguid_len)
+    payload_tree:add(field_workerguid, workerguid_buffer)
+
+    -- We build our health code <-> health status table
+    local health_code_table = {}
+    health_code_table[1] = "Healthy"
+    health_code_table[2] = "High Load"
+    health_code_table[3] = "Failure"
+
+    -- we remember that `health_buffer` holds a byte range, we interpret this as a uint
+    local health_code = health_buffer:uint()
+    -- we fetch the string from our table
+    local health_string = health_code_table[health_code]
+    -- we associate this string as the value for our generated field
+    -- it'll also be searchable in the display filter and also appear in the inspection/dissection tree
+    -- set_generated() adds square brackets around the field to mark it as generated
+    payload_tree:add(generated_health_name, health_string):set_generated()        
+
+end
+udp_table = DissectorTable.get("udp.port"):add(55055, proto_health)
 ```
 
+### Results
+We see Wireshark shows us our the our fields, and protcol name:
+![Packet Fields](/assets/dissector/dissector_result_1.png)
+
+We can filter packets by field value:
+![Filter Field](/assets/dissector/dissector_query_code.png)
+
+We can also filter packets generated field value:
+![Fitler Generated Field](/assets/dissector/dissector_query_status_string.png)
+
+
+
+### Capture File of Our Protocol
+Here's the [capture file](/assets/dissector/health_protocol_capture.pcap) of 3 packets from our Health Report protocol.
+
+### Dissector Code With All Comments
+[Download it](/assets/dissector/dissector.lua)
+```Lua
+--we create our new protocol
+local proto_health = Proto.new("health", "Health Protocol")
+
+--- --- Our Fields --- ---
+-- These are the fields defined in our protocol
+-- They will also be searchable in the display filter
+-- for `field_version`:
+--  type/size of this field (here uint8, a byte).
+--  "health.version" to be  used in the display filter to query/search/narrow down a list of packets (e.g. health.version == 1)
+--  "Version" is the display name/field label shown when drilling down in a packet
+--  `base.DEC` is the representation of the uint8 (we could have used base.HEX)
+local field_version = ProtoField.uint8("health.version", "Version", base.DEC)
+local field_health = ProtoField.uint8("health.code", "Health Code", base.HEX)
+local field_groupid = ProtoField.uint16("health.group", "Group ID", base.HEX)
+-- guid field has its own representation
+local field_workerguid = ProtoField.guid("health.guid", "Worked ID")
+
+--- Our Generated Fields --- 
+-- Generated fields are fields derived from information found in the packet
+-- In this case, we want to display a string representation of the health code
+generated_health_name = ProtoField.string("health.status", "Health Status")
+
+-- we attach all fields (normal and generated) to our protocol
+proto_health.fields = {field_version, field_health, field_groupid,
+ field_workerguid, generated_health_name}
+
+-- the `dissector()` method is called by Wireshark when parsing our packets
+-- `buffer` holds the UDP payload, all the bytes from our protocol
+-- `tree` is the structure we see when inspecting/dissecting one particular packet
+function proto_health.dissector(buffer, pinfo, tree)
+    -- Changing the value in the protocol column (the Wireshark pane that displays a list of packets) 
+    pinfo.cols.protocol = "Health Report"
+
+    -- We label the entire UDP payload as being associated with our protocol
+    local payload_tree = tree:add( proto_health, buffer() )
+
+    -- For the `version` field, we have:
+    -- the position of the first byte (which is 0 here because `version` byte is the first one in the protocol)
+    -- how long (in bytes) this field is (1 in our case)
+    local version_pos = 0
+    local version_len = 1
+    -- `version_buffer` holds the range of bytes
+    local version_buffer = buffer(version_pos,version_len)
+    -- with `add()`, we're associating the range of bytes from `buffer` with our field we declared earlier
+    -- this means:
+    -- (1) the values is now searchable in the display filter (e.g.we can filter a list of packets with health.version == 1)
+    -- (2) Wireshark will create an entry in the packet inspection tree, highlight which part of the packet we're referencing and show a label with our field name and value
+    payload_tree:add(field_version, version_buffer)
+
+    local health_pos = version_pos + version_len
+    local health_len = 1
+    local health_buffer = buffer(health_pos,health_len)
+    payload_tree:add(field_health, health_buffer)
+
+    local groupid_pos = health_pos + health_len
+    local groupid_len = 2
+    local groupid_buffer = buffer(groupid_pos, groupid_len)
+    payload_tree:add(field_groupid, groupid_buffer)
+
+    local workerguid_pos = groupid_pos + groupid_len
+    local workerguid_len = 16
+    local workerguid_buffer = buffer(workerguid_pos,workerguid_len)
+    payload_tree:add(field_workerguid, workerguid_buffer)
+
+    -- We build our health code <-> health status table
+    local health_code_table = {}
+    health_code_table[1] = "Healthy"
+    health_code_table[2] = "High Load"
+    health_code_table[3] = "Failure"
+
+    -- we remember that `health_buffer` holds a byte range, we interpret this as a uint
+    local health_code = health_buffer:uint()
+    -- we fetch the string from our table
+    local health_string = health_code_table[health_code]
+    -- we associate this string as the value for our generated field
+    -- it'll also be searchable in the display filter and also appear in the inspection/dissection tree
+    -- set_generated() adds square brackets around the field to mark it as generated
+    payload_tree:add(generated_health_name, health_string):set_generated()        
+
+end
+
+--we register our protocol on UDP port 55055
+udp_table = DissectorTable.get("udp.port"):add(55055, proto_health)
+```
