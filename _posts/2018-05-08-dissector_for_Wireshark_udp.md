@@ -46,7 +46,7 @@ Our dissector will be a Lua file that Wireshark will load and use to parse our U
 
 ### Registering Our Protocol on UDP Port 55055
 In our Lua file:
-```Lua
+```lua
 --we create our new protocol
 local proto_health = Proto.new("health", "Health Protocol")
 
@@ -67,7 +67,7 @@ There are
 + generated fields: they are derived information from the packet we wish to display in the tree (e.g. the human-readable meaning of a code) and make searchable in the display filter.
 
 
-```Lua
+```lua
 local proto_health = Proto.new("health", "Health Protocol")
 
 --- --- Our Fields --- ---
@@ -103,7 +103,7 @@ udp_table = DissectorTable.get("udp.port"):add(55055, proto_health)
 
 ### Dissecting the Protocol
 
-```Lua
+```lua
 local proto_health = Proto.new("health", "Health Protocol")
 
 local field_version = ProtoField.uint8("health.version", "Version", base.DEC)
@@ -190,7 +190,7 @@ Here's the [capture file](/assets/dissector/health_protocol_capture.pcap) of 3 p
 
 ### Dissector Code With All Comments
 [Download it](/assets/dissector/dissector.lua)
-```Lua
+```lua
 --we create our new protocol
 local proto_health = Proto.new("health", "Health Protocol")
 
