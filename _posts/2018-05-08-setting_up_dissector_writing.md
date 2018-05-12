@@ -3,12 +3,13 @@ layout: post
 title:  "Setting Up for Dissector Writing"
 category: tech
 ---
-# Setting Up for Dissector Writing
+
 Some minimal information you need to know in order to write Wireshark dissectors.
 
 I'm assuming your Wireshark dissectors are written in Lua.
 
 # Installing Wireshark
+
 ## Windows, MacOS
 On Windows and MacOS, we go to [Wireshark's official](https://www.wireshark.org/download.html); I'm going to assume you're using the 64-bit installer.
 
