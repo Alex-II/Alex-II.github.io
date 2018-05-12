@@ -5,7 +5,7 @@ category: tech
 ---
 
 # Wireshark Dissector for an UDP Protocol
-In this post, we'll explore building a simple UDP protocol dissector. Breifly, a dissector is used by Wireshark to identify a protocol's fields in the packets, as well as display, and filter information about packets (e.g. a DNS dissector will identify the URL queried, the TTL, etc.)
+In this post, we'll explore building a simple UDP protocol dissector. Briefly, a dissector is used by Wireshark to identify a protocol's fields in the packets, as well as display, and filter information about packets (e.g. a DNS dissector will identify the URL queried, the TTL, etc.)
 
 I've found a good amount of API documentation and more advanced tutorials but nothing covering the basics like I would have liked when I recently had to build an UDP protocol dissector myself.
 
@@ -174,7 +174,7 @@ udp_table = DissectorTable.get("udp.port"):add(55055, proto_health)
 ```
 
 ### Results
-We see Wireshark shows us our the our fields, and protcol name:
+We see Wireshark shows us our the our fields, and protocol name:
 ![Packet Fields](/assets/dissector/dissector_result_1.png)
 
 We can filter packets by field value:
