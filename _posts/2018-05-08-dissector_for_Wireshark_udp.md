@@ -11,6 +11,8 @@ I've found a good amount of API documentation and more advanced tutorials but no
 
 This custom dissector will be in written in Lua; dissectors can be written in C++ if performance is needed.
 
+If you want to set yourself up to write the dissector, see [Setting Up for Dissector Writing](/_posts/2018-05-08-setting_up_dissector_writing.md).
+
 ## UDP Protocol 
 We're going to invent ourselves a simple UDP protocol to then build a simple dissector around it.
 
@@ -43,6 +45,7 @@ We have 4 fields in our protocol:
 
 ## Dissector
 Our dissector will be a Lua file that Wireshark will load and use to parse our UDP packet.
+
 
 ### Registering Our Protocol on UDP Port 55055
 In our Lua file:
