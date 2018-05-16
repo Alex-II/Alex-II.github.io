@@ -3,6 +3,17 @@ layout: default
 title: Blog
 ---
 
+## Research Papers Summaries
+<ul>
+  {% for post in site.posts %}
+    {% if post.category == "papers" %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
 ## Tech Blog
 <ul>
   {% for post in site.posts %}
@@ -19,17 +30,6 @@ Notes trying to capture the essence of talks or readings; nice for later review 
 <ul>
   {% for post in site.posts %}
     {% if post.category == "notes" %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-    {% endif %}
-  {% endfor %}
-</ul>
-
-## Research Papers Summaries
-<ul>
-  {% for post in site.posts %}
-    {% if post.category == "papers" %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
