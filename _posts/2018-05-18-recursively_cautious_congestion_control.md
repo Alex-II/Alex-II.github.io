@@ -41,7 +41,7 @@ As we know, RC3 tries to send the bytes in the buffer that TCP hasn't touched ye
 From the tail end of the buffer, the last 40 bytes have low priority, the 400 bytes before that have an even lower priority and the 4000 bytes before those have a yet even lower priority, and so on. Every bigger batch has an ever-dwindling priority. 
 
 In the paper's Figure 1, the highest priority is 0.
-![priority.png](/assets/r3_priority.png)
+![priority.png](/assets/rc3_priority.png)
 
 The example in section 2.2 of the paper paints the whole process nicely.
 
