@@ -4,7 +4,7 @@ title:  "Reverse Traceroute (2010)"
 category: papers
 ---
 
-# [Reverse Traceroute](https://homes.cs.washington.edu/~arvind/papers/reversepaths.pdf)(2010)
+# [Reverse Traceroute](https://homes.cs.washington.edu/~arvind/papers/reversepaths.pdf)
 
 Traceroute is a useful network diagnostic tool for basic probing of the network, giving an idea of the routing path and a latency between source and destination nodes on the network. As a brief refresher, traceroute hopes to find every router hop between source and destination by repeatedly sending packets towards the destination with ever-increasing IP TTL values (starting with a TTL of 1), knowing that routers will decrease the TTL at each hop, and that given a packet with a TTL of 0, should drop it and send a ICMP Time Exceeded message back to the source. Traceroute keeps track of which TTL value produced which ICMP response from which router while also timing the response time from the moment the destination packet was sent to the moment an ICMP response was received from a router on path that has dropped the packet.
 
