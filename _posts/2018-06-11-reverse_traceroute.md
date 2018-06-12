@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Reverse Traceroute (2010)"
+title:  "Reverse Traceroute"
 category: papers
 ---
 
