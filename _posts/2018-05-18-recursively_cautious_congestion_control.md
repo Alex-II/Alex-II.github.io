@@ -6,7 +6,9 @@ category: papers
 
 # [Recursively Cautious Congestion Control](https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-mittal.pdf)
 
-The paper connects two observations. First that ISPs have unused bandwidth to maintain performance in the event of failures in their network (and most of the time, there aren't failures in the network). Second, that TCP uses a cautious slow start, where the *receive window* starts small to ensure fairness and avoid network oversaturation (a slow start is preferable to an almost-instant network oversaturation with high packet drops). While the receiver window does grow as TCP headers are exchanged, this means TCP will be cautiously growing that window size while the network is generally underutilized. 
+The paper connects two observations:  
+First that ISPs have unused bandwidth to maintain performance in the event of failures in their network (and most of the time, there aren't failures in the network).   
+Second, that TCP uses a cautious slow start, where the *receive window* starts small to ensure fairness and avoid network oversaturation (a slow start is preferable to an almost-instant network oversaturation with high packet drops). While the receiver window does grow as TCP headers are exchanged, this means TCP will be cautiously growing that window size while the network is generally underutilized. 
 
 ## Recursive Cautious Congestion Control (RC3) 
 The authors propose their RC3 approach, which doesn't replace TCP, it rather supplements it, running parallel/alongside it. 
