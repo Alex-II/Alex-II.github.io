@@ -130,10 +130,10 @@ Requires:
 - Software devs shy from touching production systems
 - Testing occurs in pre-production environments: pale imitation of production reality
 - Testing some things in production, need to change
-- mindset
-- system design
-- release engineering practices
-- tooling
+    - mindset
+    - system design
+    - release engineering practices
+    - tooling
 - Coding needs to switch from coding and testing for success to coding and testing for failure
 
 **Coding for Failure**  
