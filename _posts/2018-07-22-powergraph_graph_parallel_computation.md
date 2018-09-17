@@ -94,9 +94,10 @@ category: notes
 #### Oblivious Greedy
 - Middleground between Random and Coordinates: guesswork and little coordination between machines.
 
-### Execution Modes
-
-### Delta Caching
+## Fault-Tolerance
+- Snapshots are taken
+- A few seconds per snapshot
+- Stop-the-world 
 
 ## Performance
 
