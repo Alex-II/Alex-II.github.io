@@ -7,6 +7,7 @@ category: notes
 # ["Building Evolutionary Architectures" by  Patrick Kua](https://youtu.be/8bEsNT7jdC4)
 
 ## Change (Technical, Domain)  
+
 ### Technical Change  
 - Programming languages
 - Libraries
@@ -14,6 +15,7 @@ category: notes
 - Tooling
 - Operating environments (OSes, cloud environments)
 - Technical constraints (dev machines)
+
 ### Domain Change  
 - Revenue models e.g. subscription vs buying
     - importance of usage metrics, pricing data
