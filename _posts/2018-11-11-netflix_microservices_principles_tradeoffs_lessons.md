@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Microservices at Netflix Scale: Principles, Tradeoffs & Lessons Learned by Ruslan. Meshenberg [Talk]"
+title: "Microservices at Netflix Scale: Principles, Tradeoffs & Lessons Learned by Ruslan Meshenberg [Talk]"
 category: notes
 ---
 
-# ["Microservices at Netflix Scale: Principles, Tradeoffs & Lessons Learned" by  Ruslan Meshenberg](https://youtu.be/57UK46qfBLY)
+# ["Microservices at Netflix Scale: Principles, Tradeoffs & Lessons Learned" by Ruslan Meshenberg](https://youtu.be/57UK46qfBLY)
 
 ## Microservices: Benefits and Costs
 Costs of microservices aren't popular discussion points
