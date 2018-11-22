@@ -4,6 +4,7 @@ layout: default
 title: "DDD & Microservices: At Last, Some Boundaries! by Eric Evans [Talk]"
 category: notes
 ---
+
 # ["DDD & Microservices: At Last, Some Boundaries!" by Eric Evans](https://youtu.be/yPvef9R3k-M)
 
 ## Microservices (as described by Netflix) Coincide Well with DDD
