@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: "DDD & Microservices: At Last, Some Boundaries! by Eric Evans [Talk]"
