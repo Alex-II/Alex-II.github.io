@@ -35,7 +35,7 @@ Unfortunately, not all destinations are 8 hops or less away. The paper discusses
 The authors make use of vantage points: servers present peppered around the globe, that are spaced out from each other from a routing perspective. The idea is that any destination, that the source is interested in, is reachable from at least one vantage point without too many hops, even if the source is far away. 
 
 ### Building An Atlas
-The vantage points near the destination, usine normal traceroute, can identify routing paths from themselves to the source. While this is not the path from the destination to the source, it builds an atlas of paths that are near the destination and head back towards the source.
+The vantage points near the destination, using normal traceroute, can identify routing paths from themselves to the source. While this is not the path from the destination to the source, it builds an atlas of paths that are near the destination and head back towards the source.
 
 ### IP-Source Spoofing
 Finally, a vantage point sends a spoofed IP packet to the destination, with the record-route option set. The spoofed packet, while emitted by the vantage point, has its IP source field set to the source's IP. As such, when the packet reaches the destination, the destination will generate a packet heading for the source, not the vantage point. 

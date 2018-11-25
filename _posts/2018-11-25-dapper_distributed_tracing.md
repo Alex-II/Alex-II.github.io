@@ -73,7 +73,7 @@ Measured overhead:
 - sampling of 1/16 is barely measurable
 - yet sampling of 1/1024 is enough data for meaningful data  
  
- ## Adaptive Sampling  
+## Adaptive Sampling  
 - sampling per unit of time, not per request volume
     - e.g. #traces/second instead of #traces/requests
 - i.e. low traffic apps will increase the #traces/requests, high traffic will decrease #traces/request 
