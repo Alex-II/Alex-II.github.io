@@ -6,7 +6,7 @@ category: notes
 
 # ["The Verification of a Distributed System" by Caitie McCaffrey ](https://youtu.be/kDh5BrqiGhI)
 
-<b> Great Notes, References (that should be read) from Presenter: https://github.com/CaitieM20/TheVerificationOfDistributedSystem </b>
+<b> Great Notes, References (that should be read) from Presenter: [https://github.com/CaitieM20/TheVerificationOfDistributedSystem](https://github.com/CaitieM20/TheVerificationOfDistributedSystem) </b>
 
 ## Formal Verification
 - Safety: nothing bad will happen, system guarantees
