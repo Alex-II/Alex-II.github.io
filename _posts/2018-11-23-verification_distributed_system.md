@@ -27,7 +27,7 @@ category: notes
 ## Testing in the Wild
 - Unit tests
 - Integration tests
-    - boundries between systems e.g. network boundries
+    - boundaries between systems e.g. network boundaries
 - Types are not testing
     - Only as good as the type
     - [but so much better than non-types]
@@ -42,7 +42,7 @@ category: notes
 
 ## Property-Based Testing
 - Tests an input range in an unit-like test  
-- QuickCheck, ScalaCheck, many other langueages
+- QuickCheck, ScalaCheck, many other languages
     
 ## Fault Injection
 - Failure handling and confidence can only be tested when you force the system to fail
