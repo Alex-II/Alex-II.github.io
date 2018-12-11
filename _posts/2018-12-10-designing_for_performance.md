@@ -130,8 +130,11 @@ Amortize the expensive costs using batches:
 - CPU performance counters
   - exposes cache misses, branch misses
 -  Run benchmarks as part of continuous integration
+
+### Measuring Running System
 - Telemetry should be built into production system
     - Counters of: queue lengths, concurrent users, exceptions, transactions, etc.
     - Histograms of: response times, service times, queue lengths, concurrent users, etc.
 - See: Aeron system
 
+"It does not matter how intelligent you are, if you guess and that guess cannot be backed by experimental evidence - then it is still a guess" - Feynman
