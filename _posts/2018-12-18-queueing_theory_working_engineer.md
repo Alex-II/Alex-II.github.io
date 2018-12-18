@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Scalability Is Quantifiable: The Universal Scalability Law by Eben Freeman [Talk]"
+title: "Queueing Theory in Practice: Performance Modeling for the Working Engineer by Eben Freeman [Talk]"
 category: notes
 keywords: performance
 ---
