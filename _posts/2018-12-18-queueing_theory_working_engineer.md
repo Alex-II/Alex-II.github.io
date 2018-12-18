@@ -30,55 +30,55 @@ How to allocate appropriate resources for a service (e.g. on AWS) keeping costs 
 - Small experiments plus modeling: let's do that
 
 ### Small Experiment 
-Find the max request throughput for single-core (with a queue):
-- generate requests arriving at an average throughput at random
+Find the max request throughput for single-core (with a queue):  
+- generate requests arriving at an average throughput at random  
     - [the 'random' part means a given request's content is picked at random from a pool of possible request contents]
-    - simulates independent clients
-- measure latency at different throughput levels
+    - simulates independent clients  
+- measure latency at different throughput levels  
 
 ### Experiment Data
-Everything is smooth until it's not:
+Everything is smooth until it's not:  
 
 ![performance_modeling_working_engineer_data.png](/assets/performance_modeling_working_engineer_data.png)
 
 
-### What's the model that describes this?
+### What's the model that describes this?  
 
-**Step 1: identify the question**
+**Step 1: identify the question**  
 - The busier the server, the longer tasks will wait in a queue
 - As a function of throughput, how much longer does a task need to wait in the queue?
 
-**Step 2: identify the assumptions**
+**Step 2: identify the assumptions**  
 - requests arrive independently
 - requests are random
 - requests arrive at an average throughput rate, but dont' arrive at uniform constant times
 - servicing one request takes a constant time 
 - we service one request at a time
 
-**Step 3: model the system**
-At [6:13](https://youtu.be/Hda5tMrLJqc?t=373), he shows that based on the assumptions, this describes the throughput vs wait time:
+**Step 3: model the system**  
+At [6:13](https://youtu.be/Hda5tMrLJqc?t=373), he shows that based on the assumptions, this describes the throughput vs wait time:  
 
 ![performance_modeling_working_engineer_model.png](/assets/performance_modeling_working_engineer_model.png)
 
 
 
-Model fits the curve well:
+Model fits the curve well:  
 
 ![performance_modeling_working_engineer_fit.png](/assets/performance_modeling_working_engineer_fit.png)
 
 
 **Improving service time has non-linear effects**
 Model tells us halving service time and doubling throughput still results in a faster system.
-_S_ is service time, _lambda_ is throughput, W is wait:
+_S_ is service time, _lambda_ is throughput, W is wait:  
 
 ![performance_modeling_working_engineer_service_throughput.png](/assets/performance_modeling_working_engineer_service_throughput.png)
 
 
 
-**Variability is bad**
-Variability in request arrival time and request processing time causes the queueing
-- Requests arriving in bursts cause queueing
-- Processing time that is different per request type causes queueing
+**Variability is bad**  
+Variability in request arrival time and request processing time causes the queueing  
+- Requests arriving in bursts cause queueing  
+- Processing time that is different per request type causes queueing  
 
 What we can do:
 - Batching
@@ -106,16 +106,16 @@ The coordinator needs to verify the load on each possible server
     - coordination degrades throuhgput at high parallelism 
 
 ### High Parallesim and Coordination
-Paper to read: [The Power of Two Choices in Randomized Load Balancing](https://www.eecs.harvard.edu/~michaelm/postscripts/tpds2001.pdf)
-Systems to read about: Kraken, Scuba, Sparrow
+Paper to read: [The Power of Two Choices in Randomized Load Balancing]  (https://www.eecs.harvard.edu/~michaelm/postscripts/tpds2001.pdf)  
+Systems to read about: Kraken, Scuba, Sparrow  
 
-**Approximate Optimal Assignment**
+**Approximate Optimal Assignment**  
 Instead of querying N servers for, query 2 randomly. Pick best of the pair.
 
 
-**Iterative Partitioning**
-- We know throughput gets worse for large fan-out
-- Use mulit-level fans-outs with intermediaries
+**Iterative Partitioning**  
+- We know throughput gets worse for large fan-out  
+- Use mulit-level fans-outs with intermediaries  
 ![performance_modeling_working_engineer_fanout_intermediaries.png](/assets/performance_modeling_working_engineer_fanout_intermediaries.png)
 ![performance_modeling_working_engineer_fanout_intermediaries_perf.png](/assets/performance_modeling_working_engineer_fanout_intermediaries_perf.png)
 
