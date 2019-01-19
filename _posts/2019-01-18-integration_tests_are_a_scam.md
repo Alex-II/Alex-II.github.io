@@ -109,5 +109,5 @@ Establish the contract of the server, rigorously test the component with mocks, 
 - Testing 2 components is now about testing each component individually, using isolated/unit/component tests.
   - i.e. one component's test is independent of another's
 - The test multiplication became test addition 3+5+7 not 3*5*7
-
-
+- isolated unit/component tests are faster, smaller, easier to understand
+- if contract/collaboration/component tests are hard to write, design needs rework 
