@@ -85,15 +85,16 @@ Establish the contract of the server, rigorously test the component with mocks, 
 
                       Contract
                       Tests
-            ask right    |   accept requests
-            questions    |          
+
+    Client  ask right    |   Server
+            questions    |    accept requests      
                 -------> | ->-------  
               /          |          \  
-    Client               |           Server  
+                         |             
               \          |          /  
                 ------<- | <--------  
-              handle     |    generates correct
-              answers    |    response
+       Client handle     |    Server generates 
+              answers    |    correct response
 
 - Client "ask right questions" tests must have a server "accept requests" counter part
   - e.g. given a client test get-list-of-clients (and it receives empty list from mock/stub), there should be a server test for which the get-list-of-clients request from test makes the server generate an empty list. 
