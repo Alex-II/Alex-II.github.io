@@ -80,21 +80,8 @@ Establish the contract of the server, rigorously test the component with mocks, 
 ## Client Tests and Server Tests Meet
 - Client tests whether *it asks the right questions* and *can it handle all the answers*
 - Server tests that it *accept requests* and *generates the correct response*
-- 
 
-
-                      Contract
-                      Tests
-
-    Client  ask right    |   Server
-            questions    |    accept requests      
-                -------> | ->-------  
-              /          |          \  
-                         |             
-              \          |          /  
-                ------<- | <--------  
-       Client handle     |    Server generates 
-              answers    |    correct response
+![integration_tests_scam_contract_tests_diagram.PNG](/assets/integration_tests_scam_contract_tests_diagram.PNG)
 
 - Client "ask right questions" tests must have a server "accept requests" counter part
   - e.g. given a client test get-list-of-clients (and it receives empty list from mock/stub), there should be a server test for which the get-list-of-clients request from test makes the server generate an empty list. 
