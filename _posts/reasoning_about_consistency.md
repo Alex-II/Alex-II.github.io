@@ -1,0 +1,1 @@
+https://pages.lip6.fr/Marc.Shapiro/papers/CISE-POPL-2016.pdf
