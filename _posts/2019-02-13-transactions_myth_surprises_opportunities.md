@@ -2,7 +2,7 @@
 layout: default
 title: "Transactions: Myths, Surprises and Opportunities by Martin Kleppmann [Talk]"
 category: notes
-keywords: logging, observability
+keywords: transactions, database
 ---
 
 # ["Transactions: Myths, Surprises and Opportunities" by Martin Kleppmann](https://www.youtube.com/watch?v=5ZjhNTM8XU8)
@@ -15,21 +15,21 @@ keywords: logging, observability
 - 2012ish
     - NewSQL is a lot about no transactional guarantees
 
-## ACID - what does it mean exactly?
-### Durability
-- data doesn't get lost (fsync to disk, replication)
-### Consistency
+## ACID - what does it mean exactly?  
+### Durability   
+- data doesn't get lost (fsync to disk, replication)  
+### Consistency  
 - not very meaningful
  meant to mean some invariants we wish to hold true before and after DB operations
- related to the way the applicatino uses it more than the DB itself
-### Atomicity 
+ related to the way the applicatino uses it more than the DB itself  
+### Atomicity  
 - not about concurrency (as one would think about atomic read/writes needed for concurrnet read/writes)
 - about fault handling:
     - a transaction  can contain multiple disparate DB changes 
     - a crash/fault in one change will undo any other succesful changes in the same transaction
     - i.e. roll back writes on abort
-- could be called Abortability
-### Isolation
+- could be called Abortability  
+### Isolation  
 ![transactions_surprises_isolation.png](/assets/transactions_surprises_isolation.png)
 - not very clear, about concurrent changes
 - vaguely means that transactions don't need to consider concurrent changes to the DB 
