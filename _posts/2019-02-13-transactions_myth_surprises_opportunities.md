@@ -17,11 +17,13 @@ keywords: transactions, database
 
 ## ACID - what does it mean exactly?  
 ### Durability   
-- data doesn't get lost (fsync to disk, replication)  
+- data doesn't get lost (fsync to disk, replication)
+
 ### Consistency  
 - not very meaningful
  meant to mean some invariants we wish to hold true before and after DB operations
  related to the way the applicatino uses it more than the DB itself  
+
 ### Atomicity  
 - not about concurrency (as one would think about atomic read/writes needed for concurrnet read/writes)
 - about fault handling:
@@ -29,6 +31,7 @@ keywords: transactions, database
     - a crash/fault in one change will undo any other succesful changes in the same transaction
     - i.e. roll back writes on abort
 - could be called Abortability  
+
 ### Isolation  
 ![transactions_surprises_isolation.png](/assets/transactions_surprises_isolation.png)
 - not very clear, about concurrent changes
@@ -102,4 +105,6 @@ keywords: transactions, database
 - causality: proofs show this can occur without consensus and without global coordination
 - causality and efficient: can this be done efficiently? TBD
 ![transactions_surprises_isolation.png](/assets/transactions_surprises_isolation.png)
+
+
 ![transactions_surprises_isolation_bounds.png](/assets/transactions_surprises_isolation_bounds.png)
