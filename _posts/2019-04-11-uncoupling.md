@@ -79,7 +79,7 @@ keywords: transactions, database
 
 ## Long Arrows 
 **A system digram describing an interface/rpc call/simple interaction between 2 components that's actually a long chain of complex moving parts**
-[interface_was_chain.png]
+![interface_was_chain.png](/assets/interface_was_chain.png)
 - Such a ["self-contained" and undocumented] "interface" has terrible characteristics
 - latency, availability, throughput, security all bottlenecked by the worst link in the long chain
 - [I suppose because no one is taking a look at the architecture of the chain]
