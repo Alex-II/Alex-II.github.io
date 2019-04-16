@@ -2,7 +2,6 @@
 layout: default
 title: "Uncoupling by Michael Nygard [Talk]"
 category: notes
-keywords: transactions, database
 ---
 
 # ["Uncoupling" by Michael Nygard](https://www.youtube.com/watch?v=esm-1QXtA2Q)
