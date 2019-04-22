@@ -71,7 +71,7 @@ Lack of resilience:
 
 ## Quest 6: Know your toolbox
 Many techniques exist:  
-![7_quests_resilient_design_Toolbox.png](/assets/7_quests_resilient_design_Toolbox.png)
+![7_quests_resilient_design_Toolbox.PNG](/assets/7_quests_resilient_design_Toolbox.PNG)
 
 Resilience patterns:
 - patterns are options, not obligations
