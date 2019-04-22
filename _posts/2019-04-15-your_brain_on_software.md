@@ -4,7 +4,7 @@ title: "Your Brain on Software Development by Fahran Wallace [Talk]"
 category: notes
 ---
 
-# ["Your Brain on Software Development" by Fahran Wallace]()
+# ["Your Brain on Software Development" by Fahran Wallace](https://youtu.be/t4z1Hmg5LC0)
 
 ## Cognitive Biases Affect Decisions
 - Systematic errors in the brain's reasoning
