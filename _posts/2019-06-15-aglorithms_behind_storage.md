@@ -36,7 +36,7 @@ category: notes
     - returning current state implies reading the journal at several points and merging the changes in-memory 
     - sequential write, random reads
 
-## Log-Struectured Merge Trees (LSM Trees) (simplified)
+## Log-Structured Merge Trees (LSM Trees) (simplified)
 **Immutable, disk-resident, write optimized**
 - Insert, update, delete operations don't need random access (write optimization, no disk seeks)
 - Batch up updates in memory (in some sorted data structure e.g. binary search tree)
