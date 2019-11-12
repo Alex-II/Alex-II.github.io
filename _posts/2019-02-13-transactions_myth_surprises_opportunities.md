@@ -62,7 +62,7 @@ keywords: transactions, database
             - lock all the things that might need to be changed
             - perf issues when transaction holds lock on many rows
     - isolation: Serializability (without 2-phase locking)
-        - H-Store (prototype to VaultDB) solution
+        - H-Store (prototype to VoltDB) solution
             - actually serialize the transactions
             - assumes each transaction is fast 
                 - more possible with modern hardware
